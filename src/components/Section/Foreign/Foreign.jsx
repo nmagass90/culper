@@ -5,16 +5,21 @@ import { i18n } from '@config'
 import { SectionViews, SectionView } from '@components/Section/SectionView'
 import SectionElement from '@components/Section/SectionElement'
 import { Field } from '@components/Form'
-import Passport from '@components/Section/Foreign/Passport'
-import Contacts from '@components/Section/Foreign/Contacts'
-import Travel from '@components/Section/Foreign/Travel'
+import { FOREIGN } from '@constants/sections'
+import * as formTypes from '@config/formTypes'
+
+import Intro from './Intro'
+import Review from './Review'
+import Passport from './Passport'
+import Contacts from './Contacts'
+import Travel from './Travel'
 import {
   DirectActivity,
   IndirectActivity,
   RealEstateActivity,
   BenefitActivity,
   Support
-} from '@components/Section/Foreign/Activities'
+} from './Activities'
 import {
   Advice,
   Family,
@@ -25,12 +30,18 @@ import {
   Sponsorship,
   Political,
   Voting
-} from '@components/Section/Foreign/Business'
+} from './Business'
 import { extractOtherNames } from '@components/Section/extractors'
 
 class Foreign extends SectionElement {
   constructor(props) {
     super(props)
+
+    this.form = formTypes[props.formType]
+    this.section = this.form.find(section => (section.key === FOREIGN))
+
+    this.subsectionLibrary = {
+    }
 
     this.updatePassport = this.updatePassport.bind(this)
     this.updateContacts = this.updateContacts.bind(this)
@@ -129,7 +140,7 @@ class Foreign extends SectionElement {
   render() {
     return (
       <div>
-        <SectionViews
+        {/* <SectionViews
           current={this.props.subsection}
           dispatch={this.props.dispatch}
           update={this.props.update}>
@@ -681,7 +692,7 @@ class Foreign extends SectionElement {
               scrollToBottom={this.props.scrollToBottom}
             />
           </SectionView>
-        </SectionViews>
+        </SectionViews> */}
       </div>
     )
   }
@@ -729,190 +740,6 @@ Foreign.defaultProps = {
   scrollToBottom: SectionView.BottomButtonsSelector
 }
 
-export class ForeignSections extends React.Component {
-  render() {
-    return (
-      <div>
-        <Passport
-          name="passport"
-          {...this.props.Passport}
-          dispatch={this.props.dispatch}
-          onError={this.handleError}
-          required={true}
-          scrollIntoView={false}
-        />
-        <hr className="section-divider" />
-        <Contacts
-          name="contacts"
-          {...this.props.Contacts}
-          defaultState={false}
-          applicantBirthdate={this.props.applicantBirthdate}
-          addressBooks={this.props.AddressBooks}
-          dispatch={this.props.dispatch}
-          onError={this.handleError}
-          required={true}
-          scrollIntoView={false}
-        />
-        <hr className="section-divider" />
-        <DirectActivity
-          name="directActivity"
-          {...this.props.DirectActivity}
-          defaultState={false}
-          addressBooks={this.props.AddressBooks}
-          dispatch={this.props.dispatch}
-          onError={this.handleError}
-          required={true}
-          scrollIntoView={false}
-        />
-        <hr className="section-divider" />
-        <IndirectActivity
-          name="indirectActivity"
-          {...this.props.IndirectActivity}
-          defaultState={false}
-          addressBooks={this.props.AddressBooks}
-          dispatch={this.props.dispatch}
-          onError={this.handleError}
-          required={true}
-          scrollIntoView={false}
-        />
-        <hr className="section-divider" />
-        <RealEstateActivity
-          name="realEstateActivity"
-          {...this.props.RealEstateActivity}
-          defaultState={false}
-          dispatch={this.props.dispatch}
-          onError={this.handleError}
-          required={true}
-          scrollIntoView={false}
-        />
-        <hr className="section-divider" />
-        <BenefitActivity
-          name="benefitActivity"
-          {...this.props.BenefitActivity}
-          defaultState={false}
-          dispatch={this.props.dispatch}
-          onError={this.handleError}
-          required={true}
-          scrollIntoView={false}
-        />
-        <hr className="section-divider" />
-        <Support
-          name="support"
-          {...this.props.Support}
-          defaultState={false}
-          addressBooks={this.props.AddressBooks}
-          dispatch={this.props.dispatch}
-          onError={this.handleError}
-          required={true}
-          scrollIntoView={false}
-        />
-        <hr className="section-divider" />
-        <Advice
-          name="advice"
-          {...this.props.Advice}
-          defaultState={false}
-          dispatch={this.props.dispatch}
-          onError={this.handleError}
-          required={true}
-          scrollIntoView={false}
-        />
-        <hr className="section-divider" />
-        <Family
-          name="family"
-          {...this.props.Family}
-          defaultState={false}
-          dispatch={this.props.dispatch}
-          onError={this.handleError}
-          required={true}
-          scrollIntoView={false}
-        />
-        <hr className="section-divider" />
-        <Employment
-          name="employment"
-          {...this.props.Employment}
-          defaultState={false}
-          dispatch={this.props.dispatch}
-          onError={this.handleError}
-          required={true}
-          scrollIntoView={false}
-        />
-        <hr className="section-divider" />
-        <Ventures
-          name="ventures"
-          {...this.props.Ventures}
-          defaultState={false}
-          addressBooks={this.props.AddressBooks}
-          dispatch={this.props.dispatch}
-          onError={this.handleError}
-          required={true}
-          scrollIntoView={false}
-        />
-        <hr className="section-divider" />
-        <Conferences
-          name="Conferences"
-          {...this.props.Conferences}
-          defaultState={false}
-          dispatch={this.props.dispatch}
-          onError={this.handleError}
-          required={true}
-          scrollIntoView={false}
-        />
-        <hr className="section-divider" />
-        <Contact
-          name="Contact"
-          {...this.props.Contact}
-          defaultState={false}
-          addressBooks={this.props.AddressBooks}
-          dispatch={this.props.dispatch}
-          onError={this.handleError}
-          required={true}
-          scrollIntoView={false}
-        />
-        <hr className="section-divider" />
-        <Sponsorship
-          name="Sponsorship"
-          {...this.props.Sponsorship}
-          defaultState={false}
-          applicantBirthdate={this.props.applicantBirthdate}
-          addressBooks={this.props.AddressBooks}
-          dispatch={this.props.dispatch}
-          onError={this.handleError}
-          required={true}
-          scrollIntoView={false}
-        />
-        <hr className="section-divider" />
-        <Political
-          name="Political"
-          {...this.props.Political}
-          defaultState={false}
-          dispatch={this.props.dispatch}
-          onError={this.handleError}
-          required={true}
-          scrollIntoView={false}
-        />
-        <hr className="section-divider" />
-        <Voting
-          name="Voting"
-          {...this.props.Voting}
-          defaultState={false}
-          dispatch={this.props.dispatch}
-          onError={this.handleError}
-          required={true}
-          scrollIntoView={false}
-        />
-        <hr className="section-divider" />
-        <Travel
-          name="Travel"
-          {...this.props.Travel}
-          defaultState={false}
-          dispatch={this.props.dispatch}
-          onError={this.handleError}
-          required={true}
-          scrollIntoView={false}
-        />
-      </div>
-    )
-  }
-}
+export const ForeignSections = () => <Review />
 
 export default withRouter(connect(mapStateToProps)(Foreign))

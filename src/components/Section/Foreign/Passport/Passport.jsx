@@ -1,8 +1,8 @@
 import React from 'react'
-import { i18n } from '../../../../config'
-import schema from '../../../../schema'
-import validate from '../../../../validators'
-import SubsectionElement from '../../SubsectionElement'
+import { i18n } from '@config'
+import schema from '@schema'
+import validate from '@validators'
+import Subsection from '@components/Section/shared/Subsection'
 import {
   Field,
   Show,
@@ -10,30 +10,38 @@ import {
   Suggestions,
   Name,
   DateControl,
-  Branch,
-  Radio,
-  RadioGroup
-} from '../../../Form'
-import { extractDate } from '../../History/dateranges'
+  Branch
+} from '@components/Form'
+import {
+  FOREIGN,
+  FOREIGN_PASSPORT
+} from '@config/formSections/foreign'
+import { extractDate } from './../../History/dateranges'
+import connectForeignSection from '../ForeignConnector';
 
-export default class Passport extends SubsectionElement {
+const sectionConfig = {
+  section: FOREIGN.name,
+  store: FOREIGN.store,
+  subsection: FOREIGN_PASSPORT.name,
+  storeKEY: FOREIGN_PASSPORT.storeKey
+}
+
+export class Passport extends Subsection {
   constructor(props) {
     super(props)
 
-    this.update = this.update.bind(this)
-    this.updateBranch = this.updateBranch.bind(this)
-    this.updateName = this.updateName.bind(this)
-    this.updateNumber = this.updateNumber.bind(this)
-    this.updateCard = this.updateCard.bind(this)
-    this.updateIssued = this.updateIssued.bind(this)
-    this.updateExpiration = this.updateExpiration.bind(this)
+    const { section, subsection, store, storeKey } = sectionConfig
+
+    this.section = section
+    this.subsection = subsection
+    this.store = store
+    this.storeKey = storeKey
+
     this.showSuggestions = this.showSuggestions.bind(this)
-    this.onSuggestion = this.onSuggestion.bind(this)
-    this.onDismiss = this.onDismiss.bind(this)
   }
 
-  update(queue, fn) {
-    this.props.onUpdate({
+  update= (queue, fn) => {
+    this.props.onUpdate(this.storeKey, {
       Name: this.props.Name,
       Number: this.props.Number,
       Card: this.props.Card,
@@ -50,10 +58,15 @@ export default class Passport extends SubsectionElement {
     }
   }
 
+  updateField = (field, value) => {
+    this.update({
+      [field]: value
+    })
+  }
   /**
    * Handle the change event.
    */
-  updateCard(values) {
+  updateCard = values => {
     this.update(
       {
         Card: values
@@ -70,7 +83,7 @@ export default class Passport extends SubsectionElement {
   /**
    * Handle when the yes/no option has been changed
    */
-  updateBranch(values) {
+  updateBranch = values => {
     this.update({
       HasPassports: values,
       Name: values.value === 'Yes' ? this.props.Name : {},
@@ -80,51 +93,27 @@ export default class Passport extends SubsectionElement {
     })
   }
 
-  updateName(values) {
-    this.update({
-      Name: values
-    })
-  }
-
-  updateNumber(values) {
-    this.update({
-      Number: values
-    })
-  }
-
-  updateIssued(values) {
-    this.update({
-      Issued: values
-    })
-  }
-
-  updateExpiration(values) {
-    this.update({
-      Expiration: values
-    })
-  }
-
-  renderSuggestion(suggestion) {
+  renderSuggestion = suggestion => {
     suggestion = suggestion || {}
     const name = `${suggestion.first || ''} ${suggestion.middle ||
       ''} ${suggestion.last || ''} ${suggestion.suffix || ''}`.trim()
     return <span>{name}</span>
   }
 
-  onSuggestion(suggestion) {
+  onSuggestion = suggestion => {
     this.update({
       Name: suggestion,
       suggestedNames: []
     })
   }
 
-  onDismiss(suggestion) {
+  onDismiss = () => {
     this.update({
       suggestedNames: []
     })
   }
 
-  showSuggestions() {
+  showSuggestions = () => {
     // If we have a name already, don't show
     if (this.props.Name && this.props.Name.first && this.props.Name.last) {
       return false
@@ -134,7 +123,7 @@ export default class Passport extends SubsectionElement {
     return this.props.suggestedNames.length
   }
 
-  passportBeforeCutoff() {
+  passportBeforeCutoff = () => {
     if (this.props.Issued) {
       const cutoffDate = new Date('1/1/1990 00:00')
       const issueDate = extractDate(this.props.Issued)
@@ -156,7 +145,7 @@ export default class Passport extends SubsectionElement {
     return (
       <div
         className="section-content passport"
-        {...super.dataAttributes(this.props)}>
+        {...super.dataAttributes()}>
         <h1 className="section-header">{i18n.t('foreign.passport.title')}</h1>
 
         <h3>{i18n.t('foreign.passport.info.text')}</h3>
@@ -174,19 +163,19 @@ export default class Passport extends SubsectionElement {
           label={i18n.t('foreign.passport.question.title')}
           labelSize="h4"
           {...this.props.HasPassports}
-          warning={true}
           onUpdate={this.updateBranch}
           onError={this.handleError}
           required={this.props.required}
           scrollIntoView={this.props.scrollIntoView}
+          warning
         />
         <Show when={this.props.HasPassports.value === 'Yes'}>
           <div>
             <Field
               title={i18n.t('foreign.passport.name')}
               titleSize="h4"
-              optional={true}
               className="no-margin-bottom"
+              optional
             />
             <Suggestions
               show={this.showSuggestions()}
@@ -202,13 +191,13 @@ export default class Passport extends SubsectionElement {
               onDismiss={this.onDismiss}
             />
             <Field
-              optional={true}
               filterErrors={Name.requiredErrorsOnly}
-              scrollIntoView={this.props.scrollIntoView}>
+              scrollIntoView={this.props.scrollIntoView}
+              optional>
               <Name
                 name="name"
                 {...this.props.Name}
-                onUpdate={this.updateName}
+                onUpdate={value => { this.updateField('Name', value) }}
                 onError={this.handleError}
                 required={this.props.required}
                 scrollIntoView={this.props.scrollIntoView}
@@ -226,7 +215,7 @@ export default class Passport extends SubsectionElement {
                 className="passport-issued"
                 {...this.props.Issued}
                 minDateEqualTo={true}
-                onUpdate={this.updateIssued}
+                onUpdate={value => { this.updateField('Issued', value) }}
                 onError={this.handleError}
                 required={this.props.required}
               />
@@ -245,7 +234,7 @@ export default class Passport extends SubsectionElement {
                 minDate={this.props.Issued}
                 minDateEqualTo={true}
                 noMaxDate={true}
-                onUpdate={this.updateExpiration}
+                onUpdate={value => { this.updateField('Explanation', value) }}
                 onError={this.handleError}
                 required={this.props.required}
               />
@@ -267,7 +256,7 @@ export default class Passport extends SubsectionElement {
                   className="number passport-number"
                   ref="number"
                   prefix="passport"
-                  onUpdate={this.updateNumber}
+                  onUpdate={value => { this.updateField('Name', value) }}
                   onError={this.handleError}
                   required={this.props.required}
                 />
@@ -298,10 +287,10 @@ Passport.defaultProps = {
   onError: (value, arr) => {
     return arr
   },
-  section: 'foreign',
-  subsection: 'passport',
   dispatch: () => {},
   validator: data => {
     return validate(schema('foreign.passport', data))
   }
 }
+
+export default connectForeignSection(Passport, sectionConfig)
