@@ -1,4 +1,5 @@
 import React from 'react'
+import { Route } from 'react-router'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import { i18n } from '@config'
@@ -7,6 +8,7 @@ import SectionElement from '@components/Section/SectionElement'
 import { Field } from '@components/Form'
 import { FOREIGN } from '@constants/sections'
 import * as formTypes from '@config/formTypes'
+import SectionNavigation from '@components/Section/shared/SectionNavigation'
 
 import Intro from './Intro'
 import Review from './Review'
@@ -41,6 +43,24 @@ class Foreign extends SectionElement {
     this.section = this.form.find(section => (section.key === FOREIGN))
 
     this.subsectionLibrary = {
+      intro: Intro,
+      passport: Passport,
+      contacts: Contacts,
+      direct: DirectActivity,
+      indirect: IndirectActivity,
+      realestate: RealEstateActivity,
+      benefits: BenefitActivity,
+      support: Support,
+      advice: Advice,
+      family: Family,
+      employment: Employment,
+      ventures: Ventures,
+      conferences: Conferences,
+      contact: Contact,
+      sponsorship: Sponsorship,
+      political: Political,
+      voting: Voting,
+      travel: Travel
     }
 
     this.updatePassport = this.updatePassport.bind(this)
@@ -60,6 +80,16 @@ class Foreign extends SectionElement {
     this.updatePolitical = this.updatePolitical.bind(this)
     this.updateVoting = this.updateVoting.bind(this)
     this.updateTravel = this.updateTravel.bind(this)
+  }
+
+  getForeignSubsections = () => {
+    return this.section.subsections.map(subsection => (
+      <Route
+        key={subsection.key}
+        path={`/form${subsection.path}`}
+        component={this.subsectionLibrary[subsection.name]}
+      />
+    ))
   }
 
   componentWillReceiveProps(next) {
@@ -138,8 +168,11 @@ class Foreign extends SectionElement {
   }
 
   render() {
+    const { subsection, formType } = this.props
+
     return (
       <div>
+        {this.getForeignSubsections()}
         {/* <SectionViews
           current={this.props.subsection}
           dispatch={this.props.dispatch}
@@ -693,6 +726,11 @@ class Foreign extends SectionElement {
             />
           </SectionView>
         </SectionViews> */}
+        <SectionNavigation
+          section={FOREIGN}
+          subsection={subsection}
+          formType={formType}
+        />
       </div>
     )
   }
@@ -700,6 +738,7 @@ class Foreign extends SectionElement {
 
 function mapStateToProps(state) {
   const app = state.application || {}
+  const auth = state.authentication || {}
   const identification = app.Identification || {}
   const foreign = app.Foreign || {}
   const errors = app.Errors || {}
@@ -730,7 +769,8 @@ function mapStateToProps(state) {
     Errors: errors.foreign || [],
     Completed: completed.foreign || [],
     suggestedNames: names,
-    AddressBooks: addressBooks
+    AddressBooks: addressBooks,
+    formType: auth.formType
   }
 }
 
