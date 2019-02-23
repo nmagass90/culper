@@ -83,21 +83,26 @@ class Foreign extends SectionElement {
   }
 
   getForeignSubsections = () => {
-    return this.section.subsections.map(subsection => (
-      <Route
-        key={subsection.key}
-        path={`/form${subsection.path}`}
-        component={this.subsectionLibrary[subsection.name]}
-      />
-    ))
+    return this.section.subsections.map(subsection => {
+      const { key, path, name } = subsection
+      if (path) {
+        return (
+          <Route
+            key={key}
+            path={`/form/${path.section}/${path.subsection || ''}`}
+            component={this.subsectionLibrary[name]}
+          />
+        )
+      }
+    })
   }
 
-  componentWillReceiveProps(next) {
-    // Redirect to direct control
-    if (next.subsection === 'activities') {
-      this.props.history.push('/form/foreign/activities/direct')
-    }
-  }
+  // componentWillReceiveProps(next) {
+  //   // Redirect to direct control
+  //   if (next.subsection === 'activities') {
+  //     this.props.history.push('/form/foreign/activities/direct')
+  //   }
+  // }
 
   updatePassport(values) {
     this.handleUpdate('Passport', values)
