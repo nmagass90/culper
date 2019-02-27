@@ -78,7 +78,8 @@ export class Contacts extends Subsection {
           onUpdate={this.updateHasForeignContacts}
           onError={this.handleError}
           required={this.props.required}
-          scrollIntoView={this.props.scrollIntoView}>
+          scrollIntoView={this.props.scrollIntoView}
+        >
           warning
           {i18n.m('foreign.contacts.para.definition')}
           {i18n.m('foreign.contacts.para.includes')}
