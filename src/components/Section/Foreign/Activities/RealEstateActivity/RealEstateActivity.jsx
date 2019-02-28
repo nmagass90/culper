@@ -3,7 +3,8 @@ import { i18n } from 'config'
 import schema from 'schema'
 import validate, { ForeignRealEstateInterestValidator } from 'validators'
 import { Summary, AddressSummary, DateSummary } from 'components/Summary'
-import { Accordion, Branch, Show } from 'components/Form'
+import { Accordion, Show } from 'components/Form'
+import Branch from 'components/Form/Branch/Branch'
 import { FOREIGN, FOREIGN_ACTIVITIES_REAL_ESTATE } from 'config/formSections/foreign'
 import Subsection from 'components/Section/shared/Subsection'
 import RealEstateInterest from './RealEstateInterest'
@@ -15,7 +16,6 @@ const sectionConfig = {
   subsection: FOREIGN_ACTIVITIES_REAL_ESTATE.name,
   storeKey: FOREIGN_ACTIVITIES_REAL_ESTATE.storeKey,
 }
-
 
 export class RealEstateActivity extends Subsection {
   constructor(props) {
@@ -136,6 +136,7 @@ RealEstateActivity.defaultProps = {
   dispatch: () => {},
   validator: data => validate(schema('foreign.activities.realestate', data)),
   scrollToBottom: '',
+  required: true,
 }
 
 export default connectForeignSection(RealEstateActivity, sectionConfig)

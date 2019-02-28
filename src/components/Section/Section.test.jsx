@@ -9,11 +9,11 @@ import navigation from '../../config/navigation'
 
 // give a fake GUID so the field IDs don't differ between snapshots
 // https://github.com/facebook/jest/issues/936#issuecomment-404246102
-jest.mock('../Form/ValidationElement/helpers', () => {
+jest.mock('../Form/ValidationElement/helpers', () =>
   Object.assign(require.requireActual('../Form/ValidationElement/helpers'), {
     newGuid: jest.fn().mockReturnValue('MOCK-GUID'),
   })
-})
+)
 
 const shouldSkip = (section, subsection) => (
   section.exclude

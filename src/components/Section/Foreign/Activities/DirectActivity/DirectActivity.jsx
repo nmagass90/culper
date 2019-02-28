@@ -78,7 +78,7 @@ export class DirectActivity extends Subsection {
     return (
       <div
         className="section-content direct"
-        {...super.dataAttributes(this.props)}
+        {...super.dataAttributes()}
       >
         <h1 className="section-header">{i18n.t('foreign.subsection.activities.direct')}</h1>
         <Branch

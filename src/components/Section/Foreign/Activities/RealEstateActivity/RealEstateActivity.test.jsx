@@ -7,33 +7,30 @@ import { RealEstateActivity } from './RealEstateActivity'
 
 describe('The RealEstateActivity component', () => {
   const mockStore = configureMockStore()
-  let createComponent
-
-  beforeEach(() => {
-    const store = mockStore()
-    createComponent = (expected = {}) => {
-      /*  eslint-disable comma-dangle */
-      mount(
-        <Provider store={store}>
-          <RealEstateActivity {...expected} />
-        </Provider>
-      )
-      /*  eslint-enable comma-dangle */
-    }
-  })
 
   it('Renders without errors', () => {
-    const component = createComponent()
-    expect(component.find('.realestate').length).toBe(1)
+    const store = mockStore({})
+    mount(
+      <Provider store={store}>
+        <RealEstateActivity />
+      </Provider>
+    )
   })
 
   it('Updates with yes', () => {
     let updates = 0
-    const onUpdate = () => {
-      updates += 1
+    const expected = {
+      onUpdate: () => {
+        updates += 1
+      }
     }
 
-    const component = createComponent({ onUpdate })
+    const store = mockStore({})
+    const component = mount(
+      <Provider store={store}>
+        <RealEstateActivity {...expected} />
+      </Provider>
+    )
     expect(component.find('.realestate').length).toBe(1)
     component.find('.branch .no input').simulate('change')
     expect(updates).toBe(1)
@@ -53,7 +50,12 @@ describe('The RealEstateActivity component', () => {
         ],
       },
     }
-    const component = createComponent(expected)
+    const store = mockStore({})
+    const component = mount(
+      <Provider store={store}>
+        <RealEstateActivity {...expected} />
+      </Provider>
+    )
     expect(component.find('.accordion').length).toBe(1)
     expect(component.find('.context strong').text()).toBe('Yourself')
   })
@@ -133,7 +135,12 @@ describe('The RealEstateActivity component', () => {
     ]
 
     tests.forEach((test) => {
-      const component = createComponent({ ...test.props })
+      const store = mockStore({})
+      const component = mount(
+        <Provider store={store}>
+          <RealEstateActivity {...test.props} />
+        </Provider>
+      )
       expect(component.find('.accordion').length).toBe(1)
       expect(component.find('.context strong').text()).toBe(test.expected)
     })
@@ -143,7 +150,12 @@ describe('The RealEstateActivity component', () => {
     const expected = {
       HasInterests: { value: 'No' }
     }
-    const component = createComponent(expected)
+    const store = mockStore({})
+    const component = mount(
+      <Provider store={store}>
+        <RealEstateActivity {...expected} />
+      </Provider>
+    )
     expect(component.find('.accordion').length).toBe(0)
   })
 
@@ -199,7 +211,12 @@ describe('The RealEstateActivity component', () => {
         ],
       },
     }
-    const component = createComponent(expected)
+    const store = mockStore({})
+    const component = mount(
+      <Provider store={store}>
+        <RealEstateActivity {...expected} />
+      </Provider>
+    )
     expect(component.find('.accordion').length).toBe(1)
     expect(status).toBe(true)
   })

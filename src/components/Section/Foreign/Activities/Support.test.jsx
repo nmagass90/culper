@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import Support from './Support'
+import { Support } from './Support'
 
 describe('The foreign activities support component', () => {
   it('display nothing when "no" is clicked', () => {

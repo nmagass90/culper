@@ -80,7 +80,7 @@ export class BenefitActivity extends Subsection {
 
     const summary = [who, benefit.Country].reduce((prev, next) => {
       if (prev && next) {
-        return `${prev}  - ${next}`
+        return `${prev} - ${next}`
       }
       return prev
     })

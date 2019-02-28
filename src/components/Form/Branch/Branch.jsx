@@ -1,7 +1,6 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { i18n } from '../../../config'
-import { Field, Radio, RadioGroup } from '../../Form'
+import { i18n } from 'config'
+import { Field, Radio, RadioGroup } from 'components/Form'
 
 /**
  * Branch is a component that stores whether Yes/No options were selected. It contains a callback

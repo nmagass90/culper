@@ -6921,6 +6921,7 @@ exports[`The print section renders properly 1`] = `
                   <div
                     className="content"
                   >
+                    warning
                     <div>
                       <p>
                         A foreign national is defined as any person who is not a citizen or national of the U.S.
@@ -7001,7 +7002,7 @@ exports[`The print section renders properly 1`] = `
         <div
           className="section-content direct"
           data-section="foreign"
-          data-subsection="activities/direct"
+          data-subsection="direct"
         >
           <h1
             className="section-header"
@@ -7182,7 +7183,7 @@ exports[`The print section renders properly 1`] = `
         <div
           className="section-content indirect"
           data-section="foreign"
-          data-subsection="activities/indirect"
+          data-subsection="indirect"
         >
           <h1
             className="section-header"
@@ -7352,7 +7353,7 @@ exports[`The print section renders properly 1`] = `
         <div
           className="section-content realestate"
           data-section="foreign"
-          data-subsection="activities/realestate"
+          data-subsection="realestate"
         >
           <h1
             className="section-header"
@@ -7498,7 +7499,7 @@ exports[`The print section renders properly 1`] = `
         <div
           className="section-content benefit-activity"
           data-section="foreign"
-          data-subsection="activities/benefits"
+          data-subsection="benefits"
         >
           <h1
             className="section-header"
@@ -7644,7 +7645,7 @@ exports[`The print section renders properly 1`] = `
         <div
           className="section-content foreign-activities-support"
           data-section="foreign"
-          data-subsection="activities/support"
+          data-subsection="support"
         >
           <h1
             className="section-header"
@@ -7790,7 +7791,7 @@ exports[`The print section renders properly 1`] = `
         <div
           className="section-content foreign-business-advice"
           data-section="foreign"
-          data-subsection="business/advice"
+          data-subsection="advice"
         >
           <h1
             className="section-header"
@@ -7950,7 +7951,7 @@ exports[`The print section renders properly 1`] = `
         <div
           className="section-content foreign-business-family"
           data-section="foreign"
-          data-subsection="business/family"
+          data-subsection="family"
         >
           <h1
             className="section-header"
@@ -8111,7 +8112,7 @@ exports[`The print section renders properly 1`] = `
         <div
           className="section-content foreign-business-employment"
           data-section="foreign"
-          data-subsection="business/employment"
+          data-subsection="employment"
         >
           <h1
             className="section-header"
@@ -8257,7 +8258,7 @@ exports[`The print section renders properly 1`] = `
         <div
           className="section-content foreign-business-ventures"
           data-section="foreign"
-          data-subsection="business/ventures"
+          data-subsection="ventues"
         >
           <h1
             className="section-header"
@@ -8409,12 +8410,12 @@ exports[`The print section renders properly 1`] = `
         <div
           className="section-content foreign-business-conferences"
           data-section="foreign"
-          data-subsection="business/conferences"
+          data-subsection="conferences"
         >
           <h1
             className="section-header"
           >
-            Event participation
+            en.foreign.subsection.business.events
           </h1>
           <div
             aria-label="Have you in the last seven (7) years attended or participated in any conferences, trade shows, seminars, or meetings outside the U.S.?"
@@ -8561,7 +8562,7 @@ exports[`The print section renders properly 1`] = `
         <div
           className="section-content foreign-business-contact"
           data-section="foreign"
-          data-subsection="business/contact"
+          data-subsection="contact"
         >
           <h1
             className="section-header"
@@ -8727,7 +8728,7 @@ exports[`The print section renders properly 1`] = `
         <div
           className="section-content foreign-business-sponsorship"
           data-section="foreign"
-          data-subsection="business/sponsorship"
+          data-subsection="sponsorship"
         >
           <h1
             className="section-header"
@@ -8897,7 +8898,7 @@ exports[`The print section renders properly 1`] = `
         <div
           className="section-content foreign-business-political"
           data-section="foreign"
-          data-subsection="business/political"
+          data-subsection="political"
         >
           <h1
             className="section-header"
@@ -9043,7 +9044,7 @@ exports[`The print section renders properly 1`] = `
         <div
           className="section-content foreign-business-voting"
           data-section="foreign"
-          data-subsection="business/voting"
+          data-subsection="voting"
         >
           <h1
             className="section-header"

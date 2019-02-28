@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { i18n } from '../../../../../config'
 import {
@@ -13,7 +14,7 @@ import {
 import OneTimeBenefit from './OneTimeBenefit'
 import FutureBenefit from './FutureBenefit'
 import ContinuingBenefit from './ContinuingBenefit'
-import OtherBenefit from './OtherBenefit';
+import OtherBenefit from './OtherBenefit'
 
 export default class Benefit extends ValidationElement {
   constructor(props) {

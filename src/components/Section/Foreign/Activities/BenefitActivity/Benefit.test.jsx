@@ -10,7 +10,7 @@ describe('The Benefit component', () => {
   let createComponent
 
   beforeEach(() => {
-    const store = mockStore()
+    const store = mockStore({})
     createComponent = (expected = {}) => {
       /* eslint-disable comma-dangle */
       mount(
@@ -23,7 +23,12 @@ describe('The Benefit component', () => {
   })
 
   it('Renders without errors', () => {
-    const component = createComponent()
+    const store = mockStore({})
+    const component = mount(
+      <Provider store={store}>
+        <Benefit />
+      </Provider>
+    )
     expect(component.find('.benefit').length).toBe(1)
   })
 
@@ -37,7 +42,12 @@ describe('The Benefit component', () => {
         value: ['Yourself'],
       },
     }
-    const component = createComponent(expected)
+    const store = mockStore({})
+    const component = mount(
+      <Provider store={store}>
+        <Benefit {...expected} />
+      </Provider>
+    )
     expect(component.find('.benefit').length).toBe(1)
     // Toggle
     component
@@ -89,7 +99,12 @@ describe('The Benefit component', () => {
       },
     }
 
-    const component = createComponent(expected)
+    const store = mockStore({})
+    const component = mount(
+      <Provider store={store}>
+        <Benefit {...expected} />
+      </Provider>
+    )
     expect(component.find('.onetime-benefit').length).toBe(1)
     component.find('.obligated .no input').simulate('change')
     expect(updates).toBe(1)
@@ -110,7 +125,12 @@ describe('The Benefit component', () => {
       },
     }
 
-    const component = createComponent(expected)
+    const store = mockStore({})
+    const component = mount(
+      <Provider store={store}>
+        <Benefit {...expected} />
+      </Provider>
+    )
     expect(component.find('.future-benefit').length).toBe(1)
     component.find('.obligated .no input').simulate('change')
     expect(updates).toBe(1)
@@ -125,7 +145,12 @@ describe('The Benefit component', () => {
       BenefitType: { value: 'Other' },
     }
 
-    const component = createComponent(expected)
+    const store = mockStore({})
+    const component = mount(
+      <Provider store={store}>
+        <Benefit {...expected} />
+      </Provider>
+    )
     component.find('textarea[name="OtherBenefitType"]').simulate('change')
     expect(updates).toBe(1)
   })
@@ -145,7 +170,12 @@ describe('The Benefit component', () => {
       },
     }
 
-    const component = createComponent(expected)
+    const store = mockStore({})
+    const component = mount(
+      <Provider store={store}>
+        <Benefit {...expected} />
+      </Provider>
+    )
     expect(component.find('.continuing-benefit').length).toBe(1)
     component.find('.obligated .no input').simulate('change')
     expect(updates).toBe(1)
@@ -159,7 +189,12 @@ describe('The Benefit component', () => {
       },
     }
 
-    const component = createComponent(expected)
+    const store = mockStore({})
+    const component = mount(
+      <Provider store={store}>
+        <Benefit {...expected} />
+      </Provider>
+    )
     expect(component.find(ContinuingBenefit).length).toBe(1)
   })
 })
