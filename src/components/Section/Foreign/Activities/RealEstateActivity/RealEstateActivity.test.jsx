@@ -71,15 +71,15 @@ describe('The RealEstateActivity component', () => {
                     city: 'Arlington',
                     state: 'VA',
                     zipcode: '22202',
-                    layout: Location.ADDRESS
+                    layout: Location.ADDRESS,
                   },
-                  open: true
-                }
-              }
-            ]
-          }
+                  open: true,
+                },
+              },
+            ],
+          },
         },
-        expected: 'Yourself - 1234 some rd, arlington, VA 22202'
+        expected: 'Yourself - 1234 some rd, arlington, VA 22202',
       },
       {
         props: {

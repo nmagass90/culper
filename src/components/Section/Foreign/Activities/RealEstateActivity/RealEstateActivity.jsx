@@ -59,7 +59,11 @@ export class RealEstateActivity extends Subsection {
     const address = AddressSummary(o.Address, '')
     const summary = [who, address].reduce((prev, next) => {
       if (prev && next) {
-        return <span>{`${prev} - ${next}`}</span>
+        return (
+          <span>
+            {prev} - {next}
+          </span>
+        )
       }
       return prev
     })

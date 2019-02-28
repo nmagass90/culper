@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import BenefitActivity from './BenefitActivity'
+import { BenefitActivity } from './BenefitActivity'
 
 describe('The BenefitActivity component', () => {
   it('Renders without errors', () => {

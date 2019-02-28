@@ -1,14 +1,13 @@
 import React from 'react'
-import { Route } from 'react-router'
+import { withRouter, Route } from 'react-router'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router'
 import { i18n } from '@config'
-import { SectionViews, SectionView } from '@components/Section/SectionView'
-import SectionElement from '@components/Section/SectionElement'
-import { Field } from '@components/Form'
-import { FOREIGN } from '@constants/sections'
-import * as formTypes from '@config/formTypes'
-import SectionNavigation from '@components/Section/shared/SectionNavigation'
+import { SectionViews, SectionView } from 'components/Section/SectionView'
+import SectionElement from 'components/Section/SectionElement'
+import { Field } from 'components/Form'
+import { FOREIGN } from 'constants/sections'
+import * as formTypes from 'config/formTypes'
+import SectionNavigation from 'components/Section/shared/SectionNavigation'
 
 import Intro from './Intro'
 import Review from './Review'
@@ -20,7 +19,7 @@ import {
   IndirectActivity,
   RealEstateActivity,
   BenefitActivity,
-  Support
+  Support,
 } from './Activities'
 import {
   Advice,
@@ -82,20 +81,22 @@ class Foreign extends SectionElement {
     this.updateTravel = this.updateTravel.bind(this)
   }
 
-  getForeignSubsections = () => {
-    return this.section.subsections.map(subsection => {
-      const { key, path, name } = subsection
-      if (path) {
-        return (
-          <Route
-            key={key}
-            path={`/form/${path.section}/${path.subsection || ''}`}
-            component={this.subsectionLibrary[name]}
-          />
-        )
-      }
-    })
-  }
+  // getForeignSubsections = () => {
+  //   const sections = this.section.subsections.map((subsection) => {
+  //     const { key, path, name } = subsection
+  //     if (path) {
+  //       return (
+  //         <Route
+  //           key={key}
+  //           path={`/form/${path}`}
+  //           component={this.subsectionLibrary[name]}
+  //         />
+  //       )
+  //     }
+  //     return null
+  //   })
+  //   return sections
+  // }
 
   // componentWillReceiveProps(next) {
   //   // Redirect to direct control
@@ -177,7 +178,26 @@ class Foreign extends SectionElement {
 
     return (
       <div>
-        {this.getForeignSubsections()}
+        {/* <Route path="/form/foreign/" component={Intro} /> */}
+        <Route path="/form/foreign/intro" component={Intro} />
+        <Route path="/form/foreign/passport" component={Passport} />
+        <Route path="/form/foreign/contacts" component={Contacts} />
+        <Route path="/form/foreign/activities/direct" component={DirectActivity} />
+        <Route path="/form/foreign/activities/indirect" component={IndirectActivity} />
+        <Route path="/form/foreign/activities/realestate" component={RealEstateActivity} />
+        <Route path="/form/foreign/activities/benefits" component={BenefitActivity} />
+        <Route path="/form/foreign/activities/support" component={Support} />
+        <Route path="/form/foreign/business/advice" component={Advice} />
+        <Route path="/form/foreign/business/family" component={Family} />
+        <Route path="/form/foreign/business/employment" component={Employment} />
+        <Route path="/form/foreign/business/ventures" component={Ventures} />
+        <Route path="/form/foreign/business/conferences" component={Conferences} />
+        <Route path="/form/foreign/business/contact" component={Contact} />
+        <Route path="/form/foreign/business/sponsorship" component={Sponsorship} />
+        <Route path="/form/foreign/business/political" component={Political} />
+        <Route path="/form/foreign/business/voting" component={Voting} />
+        <Route path="/form/foreign/travel" component={Travel} />
+
         {/* <SectionViews
           current={this.props.subsection}
           dispatch={this.props.dispatch}

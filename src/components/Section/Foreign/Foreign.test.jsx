@@ -2,8 +2,8 @@ import React from 'react'
 import configureMockStore from 'redux-mock-store'
 import { MemoryRouter } from 'react-router'
 import { Provider } from 'react-redux'
-import Foreign from '@components/Section/Foreign/Foreign'
-import Passport from '@components/Section/Foreign/Passport'
+import Foreign from 'components/Section/Foreign/Foreign'
+import Passport from 'components/Section/Foreign/Passport'
 import { mount } from 'enzyme'
 
 const applicationState = {
@@ -14,7 +14,11 @@ describe('The foreign section', () => {
   const mockStore = configureMockStore()
 
   it('can review all subsections', () => {
-    const store = mockStore({})
+    const store = mockStore({
+      authentication: {
+        formType: 'SF86'.
+      },
+    })
     const component = mount(
       <Provider store={store}>
         <MemoryRouter>
