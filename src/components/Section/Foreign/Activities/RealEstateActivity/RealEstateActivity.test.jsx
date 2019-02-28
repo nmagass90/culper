@@ -2,8 +2,8 @@ import React from 'react'
 import configureMockStore from 'redux-mock-store'
 import { Provider } from 'react-redux'
 import { mount } from 'enzyme'
-import RealEstateActivity from './RealEstateActivity'
-import Location from '../.././../../Form/Location'
+import Location from 'components/Form/Location'
+import { RealEstateActivity } from './RealEstateActivity'
 
 describe('The RealEstateActivity component', () => {
   const mockStore = configureMockStore()
@@ -11,12 +11,15 @@ describe('The RealEstateActivity component', () => {
 
   beforeEach(() => {
     const store = mockStore()
-    createComponent = (expected = {}) =>
+    createComponent = (expected = {}) => {
+      /*  eslint-disable comma-dangle */
       mount(
         <Provider store={store}>
           <RealEstateActivity {...expected} />
         </Provider>
       )
+      /*  eslint-enable comma-dangle */
+    }
   })
 
   it('Renders without errors', () => {
@@ -27,10 +30,10 @@ describe('The RealEstateActivity component', () => {
   it('Updates with yes', () => {
     let updates = 0
     const onUpdate = () => {
-      updates++
+      updates += 1
     }
 
-    const component = createComponent({ onUpdate: onUpdate })
+    const component = createComponent({ onUpdate })
     expect(component.find('.realestate').length).toBe(1)
     component.find('.branch .no input').simulate('change')
     expect(updates).toBe(1)
@@ -45,10 +48,10 @@ describe('The RealEstateActivity component', () => {
             Item: {
               InterestTypes: { values: ['Yourself'] }
             },
-            open: true
-          }
-        ]
-      }
+            open: true,
+          },
+        ],
+      },
     }
     const component = createComponent(expected)
     expect(component.find('.accordion').length).toBe(1)
@@ -93,15 +96,15 @@ describe('The RealEstateActivity component', () => {
                     street: '1 Rd',
                     city: 'Munich',
                     country: { value: ['Germany'] },
-                    layout: Location.ADDRESS
+                    layout: Location.ADDRESS,
                   },
-                  open: true
-                }
-              }
-            ]
-          }
+                  open: true,
+                },
+              },
+            ],
+          },
         },
-        expected: 'Yourself - 1 rd, munich, germany'
+        expected: 'Yourself - 1 rd, munich, germany',
       },
       {
         props: {
@@ -117,19 +120,19 @@ describe('The RealEstateActivity component', () => {
                     city: 'APO',
                     state: 'AA',
                     zipcode: '22222',
-                    layout: Location.ADDRESS
+                    layout: Location.ADDRESS,
                   },
-                  open: true
-                }
-              }
-            ]
-          }
+                  open: true,
+                },
+              },
+            ],
+          },
         },
-        expected: 'Yourself - 1 rd, apo, AA 22222'
-      }
+        expected: 'Yourself - 1 rd, apo, AA 22222',
+      },
     ]
 
-    tests.forEach(test => {
+    tests.forEach((test) => {
       const component = createComponent({ ...test.props })
       expect(component.find('.accordion').length).toBe(1)
       expect(component.find('.context strong').text()).toBe(test.expected)
@@ -159,7 +162,7 @@ describe('The RealEstateActivity component', () => {
             Item: {
               InterestTypes: ['Yourself'],
               RealEstateType: {
-                value: 'Bar'
+                value: 'Bar',
               },
               Address: {
                 country: { value: ['United States'] },
@@ -167,34 +170,34 @@ describe('The RealEstateActivity component', () => {
                 city: 'Arlington',
                 state: 'VA',
                 zipcode: '22202',
-                layout: Location.ADDRESS
+                layout: Location.ADDRESS,
               },
               Acquired: {
                 day: '1',
                 month: '1',
-                year: '2016'
+                year: '2016',
               },
               HowAcquired: {
-                value: 'foo'
+                value: 'foo',
               },
               Cost: {
-                value: '100'
+                value: '100',
               },
               Sold: {
                 day: '1',
                 month: '1',
-                year: '2016'
+                year: '2016',
               },
               SoldNotApplicable: {
-                applicable: true
+                applicable: true,
               },
               CoOwners: {
-                List: [{ Has: 'No' }]
-              }
-            }
-          }
-        ]
-      }
+                List: [{ Has: 'No' }],
+              },
+            },
+          },
+        ],
+      },
     }
     const component = createComponent(expected)
     expect(component.find('.accordion').length).toBe(1)

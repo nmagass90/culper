@@ -11,12 +11,15 @@ describe('The Benefit component', () => {
 
   beforeEach(() => {
     const store = mockStore()
-    createComponent = (expected = {}) =>
+    createComponent = (expected = {}) => {
+      /* eslint-disable comma-dangle */
       mount(
         <Provider store={store}>
           <Benefit {...expected} />
         </Provider>
       )
+      /* eslint-enable comma-dangle */
+    }
   })
 
   it('Renders without errors', () => {
@@ -28,11 +31,11 @@ describe('The Benefit component', () => {
     let updates = 0
     const expected = {
       onUpdate: () => {
-        updates++
+        updates += 1
       },
       InterestTypes: {
-        value: ['Yourself']
-      }
+        value: ['Yourself'],
+      },
     }
     const component = createComponent(expected)
     expect(component.find('.benefit').length).toBe(1)
@@ -61,29 +64,29 @@ describe('The Benefit component', () => {
     let updates = 0
     const expected = {
       onUpdate: () => {
-        updates++
+        updates += 1
       },
       BenefitFrequency: { value: 'OneTime' },
       OneTimeBenefit: {
         Received: {
           month: '1',
           day: '1',
-          year: '2010'
+          year: '2010',
         },
         Country: {
-          value: 'Germany'
+          value: 'Germany',
         },
         Value: {
-          value: '2000'
+          value: '2000',
         },
         Reason: {
-          value: 'Foo'
+          value: 'Foo',
         },
         Obligated: { value: 'Yes' },
         ObligatedExplanation: {
-          value: 'Because'
-        }
-      }
+          value: 'Because',
+        },
+      },
     }
 
     const component = createComponent(expected)
@@ -96,15 +99,15 @@ describe('The Benefit component', () => {
     let updates = 0
     const expected = {
       onUpdate: () => {
-        updates++
+        updates += 1
       },
       BenefitFrequency: { value: 'Future' },
       FutureBenefit: {
         Obligated: { value: 'Yes' },
         ObligatedExplanation: {
-          value: 'Because'
-        }
-      }
+          value: 'Because',
+        },
+      },
     }
 
     const component = createComponent(expected)
@@ -117,9 +120,9 @@ describe('The Benefit component', () => {
     let updates = 0
     const expected = {
       onUpdate: () => {
-        updates++
+        updates += 1
       },
-      BenefitType: { value: 'Other' }
+      BenefitType: { value: 'Other' },
     }
 
     const component = createComponent(expected)
@@ -131,15 +134,15 @@ describe('The Benefit component', () => {
     let updates = 0
     const expected = {
       onUpdate: () => {
-        updates++
+        updates += 1
       },
       BenefitFrequency: { value: 'Continuing' },
       ContinuingBenefit: {
         Obligated: { value: 'Yes' },
         ObligatedExplanation: {
-          value: 'Because'
-        }
-      }
+          value: 'Because',
+        },
+      },
     }
 
     const component = createComponent(expected)
@@ -152,8 +155,8 @@ describe('The Benefit component', () => {
     const expected = {
       BenefitFrequency: { value: 'Other' },
       OtherBenefit: {
-        value: 'Other'
-      }
+        value: 'Other',
+      },
     }
 
     const component = createComponent(expected)

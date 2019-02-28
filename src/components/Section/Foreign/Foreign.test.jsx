@@ -7,7 +7,7 @@ import Passport from 'components/Section/Foreign/Passport'
 import { mount } from 'enzyme'
 
 const applicationState = {
-  Foreign: {}
+  Foreign: {},
 }
 
 describe('The foreign section', () => {
@@ -16,9 +16,10 @@ describe('The foreign section', () => {
   it('can review all subsections', () => {
     const store = mockStore({
       authentication: {
-        formType: 'SF86'.
+        formType: 'SF86',
       },
     })
+    /* eslint-disable comma-dangle */
     const component = mount(
       <Provider store={store}>
         <MemoryRouter>
@@ -26,155 +27,157 @@ describe('The foreign section', () => {
         </MemoryRouter>
       </Provider>
     )
+    /* eslint-enable comma-dangle */
     expect(component.find('div').length).toBeGreaterThan(0)
   })
 
   it('can go to each subsection', () => {
     const store = mockStore({
-      application: applicationState
+      application: applicationState,
     })
 
     const tests = [
       {
         section: 'passport',
-        action: component => {
+        action: (component) => {
           component.find('.passport .branch .yes input').simulate('change')
-        }
+        },
       },
       {
         section: 'contacts',
-        action: component => {
+        action: (component) => {
           component
             .find('.foreign-contacts .branch .yes input')
             .simulate('change')
-        }
+        },
       },
       {
         section: 'business',
-        action: component => {
+        action: (component) => {
           component
             .find('.foreign-business-advice .branch .yes input')
             .simulate('change')
-        }
+        },
       },
       {
         section: 'activities/direct',
-        action: component => {
+        action: (component) => {
           component.find('.direct .branch .yes input').simulate('change')
-        }
+        },
       },
       {
         section: 'activities/indirect',
-        action: component => {
+        action: (component) => {
           component.find('.indirect .branch .yes input').simulate('change')
-        }
+        },
       },
       {
         section: 'activities/realestate',
-        action: component => {
+        action: (component) => {
           component.find('.realestate .branch .yes input').simulate('change')
-        }
+        },
       },
       {
         section: 'activities/benefits',
-        action: component => {
+        action: (component) => {
           component
             .find('.benefit-activity .branch .yes input')
             .simulate('change')
-        }
+        },
       },
       {
         section: 'activities/support',
-        action: component => {
+        action: (component) => {
           component
             .find('.foreign-activities-support .branch .yes input')
             .simulate('change')
-        }
+        },
       },
       {
         section: 'business/advice',
-        action: component => {
+        action: (component) => {
           component
             .find('.foreign-business-advice .branch .yes input')
             .simulate('change')
-        }
+        },
       },
       {
         section: 'business/family',
-        action: component => {
+        action: (component) => {
           component
             .find('.foreign-business-family .branch .yes input')
             .simulate('change')
-        }
+        },
       },
       {
         section: 'business/employment',
-        action: component => {
+        action: (component) => {
           component
             .find('.foreign-business-employment .branch .yes input')
             .simulate('change')
-        }
+        },
       },
       {
         section: 'business/ventures',
-        action: component => {
+        action: (component) => {
           component
             .find('.foreign-business-ventures .branch .yes input')
             .simulate('change')
-        }
+        },
       },
       {
         section: 'business/conferences',
-        action: component => {
+        action: (component) => {
           component
             .find('.foreign-business-conferences .branch .yes input')
             .simulate('change')
-        }
+        },
       },
       {
         section: 'business/contact',
-        action: component => {
+        action: (component) => {
           component
             .find('.foreign-business-contact .branch .yes input')
             .simulate('change')
-        }
+        },
       },
       {
         section: 'business/sponsorship',
-        action: component => {
+        action: (component) => {
           component
             .find('.foreign-business-sponsorship .branch .yes input')
             .simulate('change')
-        }
+        },
       },
       {
         section: 'business/political',
-        action: component => {
+        action: (component) => {
           component
             .find('.foreign-business-political .branch .yes input')
             .simulate('change')
-        }
+        },
       },
       {
         section: 'business/voting',
-        action: component => {
+        action: (component) => {
           component
             .find('.foreign-business-voting .branch .yes input')
             .simulate('change')
-        }
+        },
       },
       {
         section: 'travel',
-        action: component => {
+        action: (component) => {
           component
             .find('.foreign-travel .branch .yes input')
             .at(0)
             .simulate('change')
-        }
-      }
+        },
+      },
     ]
 
-    tests.forEach(test => {
+    tests.forEach((test) => {
+      /* eslint-disable comma-dangle */
       const component = mount(
         <Provider store={store}>
           <MemoryRouter>
@@ -182,6 +185,7 @@ describe('The foreign section', () => {
           </MemoryRouter>
         </Provider>
       )
+      /* eslint-enable comma-dangle */
       test.action(component)
       expect(component.find('div').length).toBeGreaterThan(0)
     })
@@ -193,26 +197,27 @@ describe('The foreign section', () => {
         Identification: {
           ApplicantName: {
             first: 'john',
-            last: 'smith'
+            last: 'smith',
           },
           OtherNames: {
             HasOtherNames: {
-              value: 'Yes'
+              value: 'Yes',
             },
             List: {
               items: [
                 {
                   Item: {
                     first: 'johnathan',
-                    last: 'smith'
-                  }
-                }
-              ]
-            }
-          }
-        }
-      }
+                    last: 'smith',
+                  },
+                },
+              ],
+            },
+          },
+        },
+      },
     })
+    /* eslint-disable comma-dangle */
     const component = mount(
       <Provider store={store}>
         <MemoryRouter>
@@ -220,6 +225,7 @@ describe('The foreign section', () => {
         </MemoryRouter>
       </Provider>
     )
+    /* eslint-enable comma-dangle */
     expect(component.find(Passport).props().suggestedNames.length).toBe(1)
   })
 })
