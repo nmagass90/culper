@@ -1,7 +1,7 @@
 import React from 'react'
 import { withRouter, Route } from 'react-router'
 import { connect } from 'react-redux'
-import { i18n } from '@config'
+import { i18n } from 'config'
 import { SectionViews, SectionView } from 'components/Section/SectionView'
 import SectionElement from 'components/Section/SectionElement'
 import { Field } from 'components/Form'
@@ -14,6 +14,7 @@ import Review from './Review'
 import Passport from './Passport'
 import Contacts from './Contacts'
 import Travel from './Travel'
+
 import {
   DirectActivity,
   IndirectActivity,
@@ -21,6 +22,7 @@ import {
   BenefitActivity,
   Support,
 } from './Activities'
+
 import {
   Advice,
   Family,
@@ -32,7 +34,7 @@ import {
   Political,
   Voting
 } from './Business'
-import { extractOtherNames } from '@components/Section/extractors'
+import { extractOtherNames } from 'components/Section/extractors'
 
 class Foreign extends SectionElement {
   constructor(props) {
