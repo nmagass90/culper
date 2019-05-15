@@ -1,0 +1,32 @@
+input[type="radio"] + label {
+	padding: 1rem;
+  border: 1px solid $color-primary-alt-light;
+  border-radius: 4px;
+  max-width: 46rem;
+  background-color: $color-white;
+}
+
+input[type='radio'] + label::before {
+  position: absolute;
+  margin-top: 6px;
+}
+
+input[type="radio"]:disabled +label {
+  border-color: #d6d7d9;
+  opacity: .35;
+  cursor: not-allowed;
+}
+
+input[type='radio']:checked + label {
+  background: $color-green-light;
+  border-color: $color-green;
+  color: $color-white;
+}
+
+input[type='radio'] + label span {
+  margin-left: 2.5rem;
+}
+
+ .usa-checkbox-radio-error [type=radio] + label {
+  border: 3px solid #e31c3d;
+ }

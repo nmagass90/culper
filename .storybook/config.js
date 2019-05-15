@@ -2,6 +2,7 @@ import { configure, addDecorator } from '@storybook/react'
 import { withA11y } from '@storybook/addon-a11y'
 
 import '../src/eqip.scss'
+import '../src/v2/v2.scss'
 
 addDecorator(withA11y)
 
