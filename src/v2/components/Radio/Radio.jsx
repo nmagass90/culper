@@ -6,10 +6,10 @@ export class Radio extends React.Component {
   }
 	render() {
 		return(
-			<div>
+			<div styleName='v2-radio'>
 				<input 
 					id={this.props.id} 
-					type="radio" 
+					type="radio"
 					name={this.props.name}
 					disabled={this.props.disabled}
 				/>

@@ -1,9 +1,53 @@
 //FIELDSETS
 
+fieldset {
+	max-width: 64rem;
+}
+
 fieldset legend {
   line-height: 1.5;
   font-family: "Merriweather",serif;
   font-weight: 700;
   font-size: 1.7rem;
   margin-bottom: 1rem;
+}
+
+// LISTS
+
+.usa-list-inline {
+  padding-left: 0;
+  list-style: none;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.usa-list-inline li {
+  display: inline-block;
+  margin-bottom: 0;
+
+  @media all and (max-width: 980px) {
+    display: block;
+  }
+}
+
+.usa-list-inline li:not(:last-child),
+.usa-list-inline-justified li:not(:last-child) {
+  margin-right: 1rem;
+
+  @media all and (max-width: 980px) {
+    margin-right: 0;
+  }
+}
+
+.usa-list-inline-justified {
+  display: flex;
+  justify-content: space-between;
+
+  @media all and (max-width: 980px) {
+    display: block;
+  }
+}
+
+.usa-list-inline-justified li {
+  width: 100%;
 }

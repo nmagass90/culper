@@ -5,63 +5,91 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
 import RadioGroup from './RadioGroup'
-import Radio from '../Radio/Radio'
+
+export const optionsDefault = [
+      {
+        label: "Owned by you",
+        id: "owned",
+        name: "residence-type"
+      }, {
+        label: "Rented or leased by you",
+        id: "rented",
+        name: "residence-type"
+      }, {
+        label: "Military housing",
+        id: "military",
+        name: "residence-type"
+      }, {
+        label: "Other",
+        id: "other",
+        name: "residence-type"
+      }
+    ]
+
+export const optionsDisabled = [
+      {
+        label: "Owned by you",
+        id: "owned",
+        name: "residence-type",
+        disabled: true
+      }, {
+        label: "Rented or leased by you",
+        id: "rented",
+        name: "residence-type",
+        disabled: true
+      }, {
+        label: "Military housing",
+        id: "military",
+        name: "residence-type",
+        disabled: true
+      }, {
+        label: "Other",
+        id: "other",
+        name: "residence-type",
+        disabled: true
+      }
+    ]
+
+export const optionsBranch = [
+      {
+        label: "Yes",
+        id: "yes",
+        name: "branch"
+      }, {
+        label: "No",
+        id: "no",
+        name: "branch"
+      }
+    ]
 
 storiesOf('RadioGroup', module)
   .add('Default', () => (
     <RadioGroup
-      legend="Radio group New"
+      legend="Is/was this residence"
+      option={optionsDefault}
     >
-      <Radio
-        id="radio1"
-        label="Yes"
-        value="yes"
-        name="radioGroup1"
-      />
-      <Radio
-        id="radio2"
-        label="No"
-        value="no"
-        name="radioGroup1"
-      />
     </RadioGroup>
   ))
   .add('Disabled', () => (
     <RadioGroup
-      legend="Radio group New"
+      legend="Is/was this residence"
+      option={optionsDisabled}
     >
-      <Radio
-        id="radio1"
-        label="Yes"
-        value="yes"
-        name="radioGroup1"
-        disabled
-      />
-      <Radio
-        id="radio2"
-        label="No"
-        value="no"
-        name="radioGroup1"
-        disabled
-      />
     </RadioGroup>
   ))
   .add('With error', () => (
     <RadioGroup
-      legend="Radio group New"
+      legend="Is/was this residence"
+      option={optionsDefault}
       error
     >
-      <Radio
-        id="radio1"
-        label="Yes"
-        value="yes"
-        name="radioGroup1"
-      />
-      <Radio
-        id="radio2"
-        label="No"
-        value="no"
-        name="radioGroup1"
-      />
+    </RadioGroup>
+  ))
+  .add('yes/no branch', () => (
+    <RadioGroup
+      legend="Do you have former federal civilian employment, excluding military service, NOT indicated previously, to report?"
+      option={optionsBranch}
+      branch
+    >
     </RadioGroup>
   ))
