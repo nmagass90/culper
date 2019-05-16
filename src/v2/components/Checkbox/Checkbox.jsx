@@ -1,6 +1,6 @@
 import React from 'react'
 
-export class Radio extends React.Component {
+export class Checkbox extends React.Component {
 	constructor(props) {
     super(props)
   }
@@ -9,7 +9,7 @@ export class Radio extends React.Component {
 			<div>
 				<input 
 					id={this.props.id} 
-					type="radio"
+					type="checkbox"
 					name={this.props.name}
 					disabled={this.props.disabled}
 				/>
@@ -19,4 +19,4 @@ export class Radio extends React.Component {
 	}
 }
 
-export default Radio	          
+export default Checkbox	          
