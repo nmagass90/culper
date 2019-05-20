@@ -1,22 +1,34 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-export class Checkbox extends React.Component {
-	constructor(props) {
-    super(props)
-  }
-	render() {
-		return(
-			<div>
-				<input 
-					id={this.props.id} 
-					type="checkbox"
-					name={this.props.name}
-					disabled={this.props.disabled}
-				/>
-	      <label htmlFor={this.props.id}><span>{this.props.label}</span></label>
-			</div>
-		)
-	}
+function Checkbox({
+  id, name, disabled, label,
+}) {
+  return (
+    <div>
+      <input
+        id={id}
+        type="checkbox"
+        name={name}
+        disabled={disabled}
+      />
+      <label htmlFor={id}><span>{label}</span></label>
+    </div>
+  )
 }
 
-export default Checkbox	          
+Checkbox.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+  disabled: PropTypes.bool,
+  label: PropTypes.string,
+}
+
+Checkbox.defaultProps = {
+  id: '',
+  name: '',
+  disabled: false,
+  label: '',
+}
+
+export default Checkbox

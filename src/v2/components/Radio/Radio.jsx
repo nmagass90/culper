@@ -1,22 +1,34 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-export class Radio extends React.Component {
-	constructor(props) {
-    super(props)
-  }
-	render() {
-		return(
-			<div>
-				<input 
-					id={this.props.id} 
-					type="radio"
-					name={this.props.name}
-					disabled={this.props.disabled}
-				/>
-	      <label htmlFor={this.props.id}><span>{this.props.label}</span></label>
-			</div>
-		)
-	}
+function Radio({
+  id, name, disabled, label,
+}) {
+  return (
+    <div>
+      <input
+        id={id}
+        type="radio"
+        name={name}
+        disabled={disabled}
+      />
+      <label htmlFor={id}><span>{label}</span></label>
+    </div>
+  )
 }
 
-export default Radio	          
+Radio.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+  disabled: PropTypes.bool,
+  label: PropTypes.string,
+}
+
+Radio.defaultProps = {
+  id: '',
+  name: '',
+  disabled: false,
+  label: '',
+}
+
+export default Radio
