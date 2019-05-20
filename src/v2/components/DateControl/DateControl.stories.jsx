@@ -7,10 +7,13 @@ import DateControl from './DateControl'
 
 storiesOf('DateControl', module)
   .add('Default', () => (
-    <DateControl />
+    <DateControl
+      legend="Provide your date of birth"
+    />
   ))
   .add('Month and year', () => (
     <DateControl
+      legend="Provide your date of birth"
       hideDay
     />
   ))

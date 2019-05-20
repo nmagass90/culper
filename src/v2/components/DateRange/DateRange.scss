@@ -1,0 +1,39 @@
+.dateRange-container {
+	display: flex;
+	justify-content: row;
+	align-items: flex-end;
+}
+
+.dateRange-arrow {
+	width: 10%;
+	padding-bottom: 3rem;
+	text-align: center;
+}
+
+.dateRange-arrow:before {
+	content: '\f30b';
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	font-size: 3rem;
+}
+
+.dateRange-from,
+.dateRange-to {
+	margin-bottom: 2rem;
+}
+
+.dateRange-from legend,
+.dateRange-to legend {
+	font-size: 1.7rem;
+	font-family: "Source sans pro"
+}
+
+@media only screen and (max-width: 1000px) {
+	.dateRange-container {
+		display: block;
+	}
+
+	.dateRange-arrow {
+		display: none;
+	}
+}

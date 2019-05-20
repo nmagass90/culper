@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-function DateControl({ hideDay }) {
+function DateControl({ hideDay, legend }) {
   return (
     <fieldset>
-      <legend>Provide your date of birth</legend>
+      <legend>{legend}</legend>
       <div className="dateControl-container">
         <div className="dateControl-month">
           <label htmlFor="month">Month</label>
