@@ -1,0 +1,31 @@
+.dateControl-container {
+	display: flex;
+	flex-direction: row;
+}
+
+.dateControl-month,
+.dateControl-day,
+.dateControl-year {
+	width: 7rem;
+	margin-right: 2rem;
+}
+
+.dateControl-container label {
+	margin-top: .5rem;
+}
+
+.dateControl-container input {
+	padding-right: .7rem;
+}
+
+@media only screen and (max-width: 1000px) {
+	.dateControl-container {
+		display: block;
+	}
+
+	.dateControl-month,
+	.dateControl-day,
+	.dateControl-year {
+		width: 100%;
+	}
+}
