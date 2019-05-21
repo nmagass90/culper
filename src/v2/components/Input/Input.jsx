@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid'
 
+const classNames = require('classnames')
+
 export default class Input extends React.Component {
   constructor(props) {
     super(props)
@@ -20,12 +22,22 @@ export default class Input extends React.Component {
   render() {
     const uid = uuid.v4()
 
-    const { label, type, maxLength } = this.props
+    const {
+      label, type, maxLength, error, success,
+    } = this.props
 
     const { value } = this.state
 
+    const inputError = classNames({
+      'usa-input-error': error,
+    })
+
+    const inputSuccess = classNames({
+      'usa-input-success': success,
+    })
+
     return (
-      <div>
+      <div className={inputError}>
         <label
           htmlFor={uid}
         >
@@ -37,6 +49,7 @@ export default class Input extends React.Component {
           maxLength={maxLength}
           value={value}
           onChange={this.handleChange}
+          className={inputSuccess}
         />
       </div>
     )
@@ -47,10 +60,14 @@ Input.propTypes = {
   label: PropTypes.string,
   type: PropTypes.string,
   maxLength: PropTypes.number,
+  error: PropTypes.bool,
+  success: PropTypes.bool,
 }
 
 Input.defaultProps = {
   label: '',
   type: 'text',
   maxLength: '',
+  error: false,
+  success: false,
 }

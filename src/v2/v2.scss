@@ -5,6 +5,9 @@ $fa-font-path: '/fonts/';
 @import '../../node_modules/font-awesome/scss/font-awesome.scss';
 @import '../../node_modules/uswds/src/stylesheets/uswds.scss';
 
+//EQIP
+@import '../../src/eqip.scss';
+
 // VARIABLES
 @import '../sass/eqip-colors';
 @import '../sass/eqip-fonts';

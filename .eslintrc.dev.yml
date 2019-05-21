@@ -33,6 +33,7 @@ rules:
   react/forbid-prop-types: ['error', {
     forbid: ['any']
   }]
+  jsx-a11y/label-has-for: 0
 settings:
   import/resolver:
     babel-module:
