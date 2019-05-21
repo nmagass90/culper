@@ -5,17 +5,17 @@ import uuid from 'uuid'
 function Checkbox({
   id, name, disabled, label,
 }) {
-  const uid = uuid.v4()
+  const uid = `${id}-${uuid.v4()}`
 
   return (
     <div>
       <input
-        id={`${id}-${uid}`}
+        id={uid}
         type="checkbox"
         name={name}
         disabled={disabled}
       />
-      <label htmlFor={`${id}-${uid}`}><span>{label}</span></label>
+      <label htmlFor={uid}><span>{label}</span></label>
     </div>
   )
 }

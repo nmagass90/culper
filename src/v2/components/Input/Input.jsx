@@ -8,6 +8,7 @@ export default class Input extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      uid: uuid.v4(),
       value: '',
     }
     this.handleChange = this.handleChange.bind(this)
@@ -20,13 +21,11 @@ export default class Input extends React.Component {
   }
 
   render() {
-    const uid = uuid.v4()
-
     const {
       label, type, maxLength, error, success,
     } = this.props
 
-    const { value } = this.state
+    const { value, uid } = this.state
 
     const inputError = classNames({
       'usa-input-error': error,
@@ -59,7 +58,7 @@ export default class Input extends React.Component {
 Input.propTypes = {
   label: PropTypes.string,
   type: PropTypes.string,
-  maxLength: PropTypes.number,
+  maxLength: PropTypes.string,
   error: PropTypes.bool,
   success: PropTypes.bool,
 }
