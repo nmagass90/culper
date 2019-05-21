@@ -1,18 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import uuid from 'uuid'
 
 function Checkbox({
   id, name, disabled, label,
 }) {
+  const uid = uuid.v4()
+
   return (
     <div>
       <input
-        id={id}
+        id={`${id}-${uid}`}
         type="checkbox"
         name={name}
         disabled={disabled}
       />
-      <label htmlFor={id}><span>{label}</span></label>
+      <label htmlFor={`${id}-${uid}`}><span>{label}</span></label>
     </div>
   )
 }

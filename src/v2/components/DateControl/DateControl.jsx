@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Input from '../Input/Input'
 
 function DateControl({ hideDay, legend }) {
   return (
@@ -7,18 +8,27 @@ function DateControl({ hideDay, legend }) {
       <legend>{legend}</legend>
       <div className="dateControl-container">
         <div className="dateControl-month">
-          <label htmlFor="month">Month</label>
-          <input id="month" maxLength="2" type="text" />
+          <Input
+            label="Month"
+            type="text"
+            maxLength="2"
+          />
         </div>
         {!hideDay && (
         <div className="dateControl-day">
-          <label htmlFor="day">Day</label>
-          <input id="day" maxLength="2" type="text" />
+          <Input
+            label="Day"
+            type="text"
+            maxLength="2"
+          />
         </div>
         )}
         <div className="dateControl-year">
-          <label htmlFor="year">Year</label>
-          <input id="year" maxLength="4" type="text" />
+          <Input
+            label="Year"
+            type="text"
+            maxLength="4"
+          />
         </div>
       </div>
     </fieldset>
@@ -27,10 +37,12 @@ function DateControl({ hideDay, legend }) {
 
 DateControl.propTypes = {
   hideDay: PropTypes.bool,
+  legend: PropTypes.string,
 }
 
 DateControl.defaultProps = {
   hideDay: false,
+  legend: '',
 }
 
 export default DateControl
