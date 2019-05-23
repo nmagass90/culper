@@ -4,7 +4,9 @@ import Checkbox from '../Checkbox/Checkbox'
 
 const classNames = require('classnames')
 
-function CheckboxGroup({ legend, options, error }) {
+function CheckboxGroup({
+  legend, options, error, onChange,
+}) {
   const fielsetClass = classNames({
     'usa-fieldset-inputs usa-sans': true,
     'usa-checkbox-radio-error': error,
@@ -21,6 +23,7 @@ function CheckboxGroup({ legend, options, error }) {
               name={option.name}
               disabled={option.disabled}
               label={option.label}
+              onChange={onChange}
             />
           </li>
         ))}

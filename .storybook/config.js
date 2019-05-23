@@ -6,6 +6,7 @@ import '../src/v2/v2.scss'
 
 addDecorator(withA11y)
 
+
 function loadStories() {
   const req = require.context('../src', true, /\.stories\.jsx$/)
   req.keys().forEach(filename => req(filename))

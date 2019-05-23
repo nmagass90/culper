@@ -2,8 +2,10 @@
 
 import React from 'react'
 import { storiesOf } from '@storybook/react'
+import { action, configureActions } from '@storybook/addon-actions'
 
 import CheckboxGroup from './CheckboxGroup'
+import CheckboxGroupNotes from './CheckboxGroupNotes.md'
 
 export const optionsDefault = [
   {
@@ -54,8 +56,11 @@ storiesOf('CheckboxGroup', module)
     <CheckboxGroup
       legend="Relationship"
       options={optionsDefault}
+      onChange={action('checked')}
     />
-  ))
+  ), {
+    notes: { markdown: CheckboxGroupNotes },
+  })
   .add('Disabled', () => (
     <CheckboxGroup
       legend="Relationship"

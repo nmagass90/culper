@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import uuid from 'uuid'
 
 function Checkbox({
-  id, name, disabled, label,
+  id, name, disabled, label, onChange,
 }) {
   const uid = `${id}-${uuid.v4()}`
 
@@ -14,6 +14,7 @@ function Checkbox({
         type="checkbox"
         name={name}
         disabled={disabled}
+        onChange={onChange}
       />
       <label htmlFor={uid}><span>{label}</span></label>
     </div>
