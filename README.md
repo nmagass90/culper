@@ -9,15 +9,21 @@ Culper serves as the open source component to eApp, the applicant-facing system 
 
 To create Culper, the project team is employing a user-centered design approach leveraging key principles from the [U.S. Digital Services Playbook][8]:
 
-1. Understand what people need
-1. Address the whole experience, from start to finish
-1. Make it simple and intuitive
+- Understand what people need
+- Address the whole experience, from start to finish
+- Make it simple and intuitive
+- Build the service using agile and iterative practices
+- Bring in experienced teams
+- Choose a modern technology stack
+- Manage security and privacy through reusable processes 
 
 <p align="center">
    <img src="https://user-images.githubusercontent.com/4196834/58353969-fe88e500-7e3d-11e9-8d6a-6315b74ceaef.png" height="180">
    <img src="https://user-images.githubusercontent.com/4196834/58353970-fe88e500-7e3d-11e9-8325-2f4d3b1043ef.png" height="180">
    <img src="https://user-images.githubusercontent.com/4196834/58353971-fe88e500-7e3d-11e9-876d-318e0606906c.png" height="180">
  </p>
+
+ <hr>
 
 [![Build Status][badge_ci_18f]][2] [![codecov][badge_cov_18f]][24] [![Code Climate][badge_cc_18f]][3] [![Go Report Card][badge_goreportcard_18f]][22]
 
