@@ -1,6 +1,6 @@
 <p align="center">
 	<p align="center">
-		<img src="https://user-images.githubusercontent.com/4196834/58353968-fe88e500-7e3d-11e9-8aad-9d34a4578732.png" alt="Culper logo">
+		<img src="https://user-images.githubusercontent.com/4196834/58355187-88867d00-7e41-11e9-883c-4365066dabc6.png" alt="Culper logo">
 	</p>
 </p>
 
