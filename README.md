@@ -4,13 +4,16 @@
 	</p>
 </p>
 
-[![Build Status][badge_ci_18f]][2] [![codecov][badge_cov_18f]][24] [![Code Climate][badge_cc_18f]][3] [![Go Report Card][badge_goreportcard_18f]][22]
+## What is Culper?
+Culper serves as the open source component to eApp, the applicant-facing system that provides security questionnaires for the Defense Information System Agency (DISA) National Background Investigative System (NBIS) platform.
 
-To create the e-QIP questionnaire prototype, the project team is employing a user-centered design approach leveraging key principles from the [U.S. Digital Services Playbook][8]:
+To create Culper, the project team is employing a user-centered design approach leveraging key principles from the [U.S. Digital Services Playbook][8]:
 
 1. Understand what people need
 1. Address the whole experience, from start to finish
 1. Make it simple and intuitive
+
+[![Build Status][badge_ci_18f]][2] [![codecov][badge_cov_18f]][24] [![Code Climate][badge_cc_18f]][3] [![Go Report Card][badge_goreportcard_18f]][22]
 
 ## Table of contents
 
