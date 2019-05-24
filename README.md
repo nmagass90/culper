@@ -13,6 +13,12 @@ To create Culper, the project team is employing a user-centered design approach 
 1. Address the whole experience, from start to finish
 1. Make it simple and intuitive
 
+<p align="center">
+   <img src="/src/img/culper-screenshot-1" height="180">
+   <img src="/src/img/culper-screenshot-2" height="180">
+   <img src="/src/img/culper-screenshot-3" height="180">
+ </p>
+
 [![Build Status][badge_ci_18f]][2] [![codecov][badge_cov_18f]][24] [![Code Climate][badge_cc_18f]][3] [![Go Report Card][badge_goreportcard_18f]][22]
 
 ## Table of contents
