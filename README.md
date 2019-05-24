@@ -1,4 +1,8 @@
-# e-QIP Prototype
+<p align="center">
+	<p align="center">
+		<img src="/src/img/culper-logo.png" alt="Culper logo">
+	</p>
+</p>
 
 [![Build Status][badge_ci_18f]][2] [![codecov][badge_cov_18f]][24] [![Code Climate][badge_cc_18f]][3] [![Go Report Card][badge_goreportcard_18f]][22]
 
