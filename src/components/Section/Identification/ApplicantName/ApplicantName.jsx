@@ -5,6 +5,8 @@ import schema from 'schema'
 import validate from 'validators'
 import { Name, Field } from 'components/Form'
 
+import NameFieldset from 'components/v2/NameFieldset'
+
 import connectIdentificationSection from '../IdentificationConnector'
 import Subsection from '../../shared/Subsection'
 
@@ -43,6 +45,7 @@ export class ApplicantName extends Subsection {
   }
 
   updateName(values) {
+    console.log('Update name', values)
     this.update({
       Name: values
     })
@@ -59,6 +62,13 @@ export class ApplicantName extends Subsection {
         data-subsection={IDENTIFICATION_NAME.key}
       >
         <h1 className="section-header">{i18n.t('identification.destination.name')}</h1>
+
+        <NameFieldset
+          value={this.props.Name}
+          required={this.props.required}
+          onUpdate={this.updateName}
+        />
+
         <Field
           title={i18n.t('identification.name.title')}
           titleSize="h4"
