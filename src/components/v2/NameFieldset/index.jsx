@@ -6,17 +6,36 @@ import i18n from 'util/i18n'
 
 import { InputWithFormField } from 'components/v2/Input'
 import CheckboxInput from 'components/v2/CheckboxInput'
-import nameModel from 'models/shared/name'
+import { SelectWithFormField } from 'components/v2/Select'
 
+import nameModel from 'models/shared/name'
 import { validateModel } from 'models/validate'
 import { getEffectiveModel } from 'components/v2/Input/modelValidations'
 
 const NameFieldset = (props) => {
   const {
     value, title, className, disabled, required, prefix, onUpdate,
+    hideMiddleName,
   } = props
 
   const classes = classnames('name', className, { disabled })
+
+  const suffixOptions = [
+    { label: '', value: '' },
+    { label: i18n.t(`${prefix}.label.jr`), value: 'Jr' },
+    { label: i18n.t(`${prefix}.label.sr`), value: 'Sr' },
+    { label: i18n.t(`${prefix}.label.i`), value: 'I' },
+    { label: i18n.t(`${prefix}.label.ii`), value: 'II' },
+    { label: i18n.t(`${prefix}.label.iii`), value: 'III' },
+    { label: i18n.t(`${prefix}.label.iv`), value: 'IV' },
+    { label: i18n.t(`${prefix}.label.v`), value: 'V' },
+    { label: i18n.t(`${prefix}.label.vi`), value: 'VI' },
+    { label: i18n.t(`${prefix}.label.vii`), value: 'VII' },
+    { label: i18n.t(`${prefix}.label.viii`), value: 'VIII' },
+    { label: i18n.t(`${prefix}.label.ix`), value: 'IX' },
+    { label: i18n.t(`${prefix}.label.x`), value: 'X' },
+    { label: i18n.t(`${prefix}.label.other`), value: 'Other' },
+  ]
 
   const onChange = (name, newValue) => {
     onUpdate({
@@ -27,6 +46,7 @@ const NameFieldset = (props) => {
 
   const {
     first, middle, last, firstInitialOnly, middleInitialOnly, noMiddleName,
+    suffix, suffixOther,
   } = value
 
   const inputProps = {
@@ -39,7 +59,6 @@ const NameFieldset = (props) => {
   const errors = validateModel(value, nameModel) === true
     ? []
     : validateModel(value, nameModel)
-
 
   const firstInitialOnlyCheckbox = (
     <div className="modifier">
@@ -92,21 +111,23 @@ const NameFieldset = (props) => {
         errors={errors.filter(e => e.indexOf('first') > -1)}
       />
 
-      <InputWithFormField
-        name="middle"
-        label={i18n.t(`${prefix}.label.middle`)}
-        value={middle}
-        {...inputProps}
-        model={getEffectiveModel(effectiveNameModel.middle, value)}
-        errors={errors.filter(e => e.indexOf('middle') > -1)}
-        disabled={noMiddleName}
-        modifiers={(
-          <span>
-            {noMiddleNameCheckbox}
-            {middleInitialOnlyCheckbox}
-          </span>
-        )}
-      />
+      {!hideMiddleName && (
+        <InputWithFormField
+          name="middle"
+          label={i18n.t(`${prefix}.label.middle`)}
+          value={middle}
+          {...inputProps}
+          model={getEffectiveModel(effectiveNameModel.middle, value)}
+          errors={errors.filter(e => e.indexOf('middle') > -1)}
+          disabled={noMiddleName}
+          modifiers={(
+            <span>
+              {noMiddleNameCheckbox}
+              {middleInitialOnlyCheckbox}
+            </span>
+          )}
+        />
+      )}
 
       <InputWithFormField
         name="last"
@@ -116,6 +137,26 @@ const NameFieldset = (props) => {
         model={getEffectiveModel(effectiveNameModel.last, value)}
         errors={errors.filter(e => e.indexOf('last') > -1)}
       />
+
+      <SelectWithFormField
+        name="suffix"
+        label={i18n.t(`${prefix}.label.suffix`)}
+        value={suffix}
+        optional
+        className="option-list suffix usa-small-input"
+        {...inputProps}
+        options={suffixOptions}
+      />
+
+      {suffix === 'Other' && (
+        <InputWithFormField
+          name="suffixOther"
+          label={i18n.t(`${prefix}.label.other`)}
+          value={suffixOther}
+          {...inputProps}
+        />
+      )}
+
     </fieldset>
   )
 }

@@ -64,6 +64,7 @@ export class ApplicantName extends Subsection {
         <h1 className="section-header">{i18n.t('identification.destination.name')}</h1>
 
         <NameFieldset
+          title={i18n.t('identification.name.title')}
           value={this.props.Name}
           required={this.props.required}
           onUpdate={this.updateName}
