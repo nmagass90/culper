@@ -42,6 +42,7 @@ class CheckboxInput extends React.Component {
 
     const classes = classnames(
       className,
+      'block',
       {
         disabled,
         'usa-input-error': isError,

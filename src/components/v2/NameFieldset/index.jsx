@@ -26,7 +26,7 @@ const NameFieldset = (props) => {
   }
 
   const {
-    first, middle, last, firstInitialOnly,
+    first, middle, last, firstInitialOnly, middleInitialOnly, noMiddleName,
   } = value
 
   const inputProps = {
@@ -36,24 +36,46 @@ const NameFieldset = (props) => {
   }
 
   const effectiveNameModel = getEffectiveModel(nameModel, value)
-  const errors = validateModel(value, nameModel)
-  console.log(errors)
+  const errors = validateModel(value, nameModel) === true
+    ? []
+    : validateModel(value, nameModel)
+
 
   const firstInitialOnlyCheckbox = (
     <div className="modifier">
       <CheckboxInput
-        label="Initial Only"
+        label={i18n.t(`${prefix}.label.initialOnly`)}
         value={firstInitialOnly}
-        inputId="testId"
+        inputId="firstInitialOnly"
         name="firstInitialOnly"
         {...inputProps}
-      >
-        First initial only
-      </CheckboxInput>
+      />
     </div>
   )
 
-  console.log('NAME MODEL', nameModel)
+  const middleInitialOnlyCheckbox = (
+    <div className="modifier">
+      <CheckboxInput
+        label={i18n.t(`${prefix}.label.initialOnly`)}
+        value={middleInitialOnly}
+        inputId="middleInitialOnly"
+        name="middleInitialOnly"
+        {...inputProps}
+      />
+    </div>
+  )
+
+  const noMiddleNameCheckbox = (
+    <div className="modifier">
+      <CheckboxInput
+        label={i18n.t(`${prefix}.label.noMiddle`)}
+        value={noMiddleName}
+        inputId="noMiddleName"
+        name="noMiddleName"
+        {...inputProps}
+      />
+    </div>
+  )
 
   return (
     <fieldset className={classes}>
@@ -75,6 +97,15 @@ const NameFieldset = (props) => {
         label={i18n.t(`${prefix}.label.middle`)}
         value={middle}
         {...inputProps}
+        model={getEffectiveModel(effectiveNameModel.middle, value)}
+        errors={errors.filter(e => e.indexOf('middle') > -1)}
+        disabled={noMiddleName}
+        modifiers={(
+          <span>
+            {noMiddleNameCheckbox}
+            {middleInitialOnlyCheckbox}
+          </span>
+        )}
       />
 
       <InputWithFormField
@@ -82,6 +113,8 @@ const NameFieldset = (props) => {
         label={i18n.t(`${prefix}.label.last`)}
         value={last}
         {...inputProps}
+        model={getEffectiveModel(effectiveNameModel.last, value)}
+        errors={errors.filter(e => e.indexOf('last') > -1)}
       />
     </fieldset>
   )
