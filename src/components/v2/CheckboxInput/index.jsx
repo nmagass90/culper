@@ -41,7 +41,6 @@ class CheckboxInput extends React.Component {
     const checked = value == true
 
     const classes = classnames(
-      'block',
       className,
       {
         disabled,

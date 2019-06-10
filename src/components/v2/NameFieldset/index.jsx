@@ -40,15 +40,17 @@ const NameFieldset = (props) => {
   console.log(errors)
 
   const firstInitialOnlyCheckbox = (
-    <CheckboxInput
-      label="Initial Only"
-      value={firstInitialOnly}
-      inputId="testId"
-      name="firstInitialOnly"
-      {...inputProps}
-    >
-      First initial only
-    </CheckboxInput>
+    <div className="modifier">
+      <CheckboxInput
+        label="Initial Only"
+        value={firstInitialOnly}
+        inputId="testId"
+        name="firstInitialOnly"
+        {...inputProps}
+      >
+        First initial only
+      </CheckboxInput>
+    </div>
   )
 
   console.log('NAME MODEL', nameModel)
@@ -63,7 +65,7 @@ const NameFieldset = (props) => {
         helptext={i18n.m('identification.name.first.help.message')}
         value={first}
         {...inputProps}
-        modifiers={(<span>{firstInitialOnlyCheckbox}</span>)}
+        modifiers={firstInitialOnlyCheckbox}
         model={getEffectiveModel(effectiveNameModel.first, value)}
         errors={errors.filter(e => e.indexOf('first') > -1)}
       />
@@ -88,11 +90,13 @@ const NameFieldset = (props) => {
 NameFieldset.propTypes = {
   value: PropTypes.object,
   prefix: PropTypes.string,
+  onUpdate: PropTypes.func,
 }
 
 NameFieldset.defaultProps = {
   value: {},
   prefix: 'name',
+  onUpdate: () => {},
 }
 
 export default NameFieldset

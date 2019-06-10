@@ -5,6 +5,7 @@
 import React from 'react'
 
 import FormField from 'components/v2/FormField'
+import styles from './FormField.module.scss'
 
 const newGuid = () => {
   const s4 = () => {
@@ -46,10 +47,16 @@ const withFormField = (Component) => {
             {...this.props}
             inputId={this.uuid}
           />
-          {modifiers}
+          {modifiers && (
+            <div className={styles.modifiers}>{modifiers}</div>
+          )}
         </FormField>
       )
     }
+  }
+
+  FormFieldInput.defaultProps = {
+    modifiers: [],
   }
 
   return FormFieldInput
