@@ -8,7 +8,7 @@ import {
 } from 'actions/ApplicationActions'
 
 const connectIdentificationSection = (Component, {
-  section, subsection, store, storeKey,
+  section, subsection, store, storeKey, key = '',
 }) => {
   class ConnectedIdentificationSection extends React.Component {
     constructor(props) {
@@ -29,6 +29,13 @@ const connectIdentificationSection = (Component, {
     handleUpdate = (field, values) => {
       const { dispatch } = this.props
       dispatch(updateApplication(this.store, field, values))
+
+      dispatch({
+        type: 'UPDATE_FORM',
+        section: key,
+        field,
+        value: values,
+      })
     }
 
     render() {

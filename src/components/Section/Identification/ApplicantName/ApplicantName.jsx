@@ -5,6 +5,8 @@ import schema from 'schema'
 import validate from 'validators'
 import { Name, Field } from 'components/Form'
 
+import { validateIdentificationName } from 'validators/identificationname'
+
 import connectIdentificationSection from '../IdentificationConnector'
 import Subsection from '../../shared/Subsection'
 
@@ -18,6 +20,8 @@ const sectionConfig = {
   store: IDENTIFICATION.store,
   subsection: IDENTIFICATION_NAME.name,
   storeKey: IDENTIFICATION_NAME.storeKey,
+  key: IDENTIFICATION_NAME.key,
+  validator: validateIdentificationName,
 }
 
 export class ApplicantName extends Subsection {

@@ -1,5 +1,8 @@
 import React from 'react'
 import { i18n } from 'config'
+
+import Field2 from 'components/v2/Field'
+
 import ValidationElement from '../ValidationElement'
 import Field from '../Field'
 import Show from '../Show'
@@ -140,6 +143,52 @@ export default class Name extends ValidationElement {
     return (
       <div className={klass.join(' ')}>
         {this.props.title && <h2>{this.props.title}</h2>}
+
+        <Field2
+          title={i18n.t(`${prefix}.label.first`)}
+          titleSize="label"
+          help="identification.name.first.help"
+          errorPrefix="name"
+          className="usa-form-control"
+          filterErrors={this.filterErrors}
+          scrollIntoView={this.props.scrollIntoView}
+          adjustFor="labels"
+        >
+          <Text
+            name="first"
+            ref={(ref) => { this.first = ref }}
+            pattern="^[a-zA-Z\-\.' ]*$"
+            minlength={this.props.firstInitialOnly ? 1 : 2}
+            maxlength={maxFirst}
+            className="first"
+            value={this.props.first}
+            onUpdate={(values) => {
+              this.update({
+                first: values.value,
+              })
+            }}
+            onError={this.handleErrorFirst}
+            onFocus={this.props.onFocus}
+            onBlur={this.props.onBlur}
+            required={this.props.required}
+            disabled={this.props.disabled}
+          />
+          <div className="flags">
+            <Checkbox
+              name="firstInitialOnly"
+              ref={(ref) => { this.firstInitialOnly = ref }}
+              label={i18n.t(`${prefix}.label.initialOnly`)}
+              className="first-initial-only"
+              toggle="false"
+              value={this.props.firstInitialOnly}
+              checked={this.props.firstInitialOnly}
+              onUpdate={this.updateFirstInitial}
+              onError={this.handleErrorFirst}
+              disabled={this.props.disabled}
+            />
+          </div>
+        </Field2>
+
         <Field
           title={i18n.t(`${prefix}.label.first`)}
           titleSize="label"
