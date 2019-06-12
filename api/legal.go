@@ -61,17 +61,14 @@ func (entity *LegalCourt) Valid() (bool, error) {
 
 // LegalPoliceOffenses represents the payload for the legal police offenses section.
 type LegalPoliceOffenses struct {
-	PayloadHasOffenses Payload `json:"HasOffenses" sql:"-"`
-	PayloadList        Payload `json:"List" sql:"-"`
+	PayloadList Payload `json:"List" sql:"-"`
 
 	// Validator specific fields
-	HasOffenses *Branch     `json:"-"`
-	List        *Collection `json:"-"`
+	List *Collection `json:"-"`
 
 	// Persister specific fields
-	ID            int `json:"-"`
-	HasOffensesID int `json:"-" pg:", fk:HasOffenses"`
-	ListID        int `json:"-" pg:", fk:List"`
+	ID     int `json:"-"`
+	ListID int `json:"-" pg:", fk:List"`
 }
 
 // Unmarshal bytes in to the entity properties.
@@ -80,12 +77,6 @@ func (entity *LegalPoliceOffenses) Unmarshal(raw []byte) error {
 	if err != nil {
 		return err
 	}
-
-	hasOffenses, err := entity.PayloadHasOffenses.Entity()
-	if err != nil {
-		return err
-	}
-	entity.HasOffenses = hasOffenses.(*Branch)
 
 	list, err := entity.PayloadList.Entity()
 	if err != nil {
@@ -98,9 +89,6 @@ func (entity *LegalPoliceOffenses) Unmarshal(raw []byte) error {
 
 // Marshal to payload structure
 func (entity *LegalPoliceOffenses) Marshal() Payload {
-	if entity.HasOffenses != nil {
-		entity.PayloadHasOffenses = entity.HasOffenses.Marshal()
-	}
 	if entity.List != nil {
 		entity.PayloadList = entity.List.Marshal()
 	}
@@ -109,26 +97,19 @@ func (entity *LegalPoliceOffenses) Marshal() Payload {
 
 // Valid checks the value(s) against an battery of tests.
 func (entity *LegalPoliceOffenses) Valid() (bool, error) {
-	if entity.HasOffenses.Value == "No" {
-		return true, nil
-	}
-
 	return entity.List.Valid()
 }
 
 // LegalPoliceAdditionalOffenses represents the payload for the legal police additional offenses section.
 type LegalPoliceAdditionalOffenses struct {
-	PayloadHasOtherOffenses Payload `json:"HasOtherOffenses" sql:"-"`
-	PayloadList             Payload `json:"List" sql:"-"`
+	PayloadList Payload `json:"List" sql:"-"`
 
 	// Validator specific fields
-	HasOtherOffenses *Branch     `json:"-"`
-	List             *Collection `json:"-"`
+	List *Collection `json:"-"`
 
 	// Persister specific fields
-	ID                 int `json:"-"`
-	HasOtherOffensesID int `json:"-" pg:", fk:HasOtherOffenses"`
-	ListID             int `json:"-" pg:", fk:List"`
+	ID     int `json:"-"`
+	ListID int `json:"-" pg:", fk:List"`
 }
 
 // Unmarshal bytes in to the entity properties.
@@ -137,12 +118,6 @@ func (entity *LegalPoliceAdditionalOffenses) Unmarshal(raw []byte) error {
 	if err != nil {
 		return err
 	}
-
-	hasOtherOffenses, err := entity.PayloadHasOtherOffenses.Entity()
-	if err != nil {
-		return err
-	}
-	entity.HasOtherOffenses = hasOtherOffenses.(*Branch)
 
 	list, err := entity.PayloadList.Entity()
 	if err != nil {
@@ -155,9 +130,6 @@ func (entity *LegalPoliceAdditionalOffenses) Unmarshal(raw []byte) error {
 
 // Marshal to payload structure
 func (entity *LegalPoliceAdditionalOffenses) Marshal() Payload {
-	if entity.HasOtherOffenses != nil {
-		entity.PayloadHasOtherOffenses = entity.HasOtherOffenses.Marshal()
-	}
 	if entity.List != nil {
 		entity.PayloadList = entity.List.Marshal()
 	}
@@ -166,10 +138,6 @@ func (entity *LegalPoliceAdditionalOffenses) Marshal() Payload {
 
 // Valid checks the value(s) against an battery of tests.
 func (entity *LegalPoliceAdditionalOffenses) Valid() (bool, error) {
-	if entity.HasOtherOffenses.Value == "No" {
-		return true, nil
-	}
-
 	return entity.List.Valid()
 }
 
