@@ -27,6 +27,12 @@ validate.formatters.errorKeys = errors => (
       validator = 'required'
     }
 
+    if (['model'].indexOf(validator) > -1) {
+      return e.error
+    }
+
+    console.log('ERRORS', e)
+
     return `${e.attribute}.${validator}`
   })
 )
@@ -62,6 +68,7 @@ validate.options = {
   requireDay: true,
   requireMonth: true,
   requireYear: true,
+  fullMessages: false,
 }
 
 // Implement custom validators

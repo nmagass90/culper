@@ -1,6 +1,8 @@
 import * as sections from 'constants/sections'
 import * as validators from 'validators'
 
+import { validateIdentificationName } from 'validators/identificationname'
+
 // Map sections to their validator classes (temporary)
 export const getValidatorForSection = (section) => {
   switch (section) {
@@ -247,7 +249,11 @@ export const getValidatorForSection = (section) => {
   }
 }
 
-export const validateSection = ({ key, data }) => {
+export const validateSection = ({ key, data }, returnErrors = false) => {
+  if (returnErrors) {
+    return validateIdentificationName(data.ApplicantName)
+  }
+
   const Validator = getValidatorForSection(key)
 
   if (Validator) {

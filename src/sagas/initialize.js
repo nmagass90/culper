@@ -9,15 +9,27 @@ import { unschema } from 'schema'
 
 import { env } from 'config'
 
+import { sectionMapping } from 'helpers/migrate'
+
 export function* updateSectionData(name, data) {
   try {
-    yield all(Object.keys(data).map(subsection => put(
-      updateApplication(
-        name,
-        subsection,
-        unschema(data[subsection]),
+    yield all(Object.keys(data).map((subsection) => {
+      const key = sectionMapping[`${name}/${subsection}`]
+      const sectionData = unschema(data[subsection])
+
+      if (key) {
+        console.log('INIT FORM DATA', name, subsection, key)
+        return put({ type: actionTypes.SET_SECTION, section: key, data: sectionData })
+      }
+
+      return put(
+        updateApplication(
+          name,
+          subsection,
+          sectionData,
+        )
       )
-    )))
+    }))
   } catch (e) {
     yield call(env.History().push, '/error')
   }

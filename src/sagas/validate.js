@@ -10,6 +10,7 @@ import { nestedFormSectionsSelector } from 'selectors/navigation'
 
 import {
   selectState,
+  selectFormSection,
 } from 'sagas/index'
 
 export function* updateSectionStatus(section, store = '', state = {}) {
@@ -43,6 +44,16 @@ export function* updateSectionStatus(section, store = '', state = {}) {
   }
 }
 
+export function* validateFormSection(action) {
+  const { section } = action
+  const { data } = yield select(selectFormSection, section)
+  const errors = yield call(validateSection, { section, data }, true)
+  if (errors !== true) {
+    console.log('updated section', section, data, errors)
+  }
+  yield put({ type: 'UPDATE_ERRORS', section, errors })
+}
+
 export function* validateFormData() {
   const formSections = yield select(nestedFormSectionsSelector)
   const state = yield select(selectState)
@@ -51,4 +62,5 @@ export function* validateFormData() {
 
 export function* validateWatcher() {
   yield takeLatest(actionTypes.VALIDATE_FORM_DATA, validateFormData)
+  yield takeLatest('UPDATE_FORM', validateFormSection)
 }

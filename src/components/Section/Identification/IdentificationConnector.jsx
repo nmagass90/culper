@@ -58,6 +58,8 @@ const connectIdentificationSection = (Component, {
   }
 
   const mapStateToProps = (state) => {
+    const { form = {} } = state
+
     const app = state.application || {}
     const identification = app.Identification || {}
     const errors = app.Errors || {}
@@ -65,7 +67,10 @@ const connectIdentificationSection = (Component, {
 
     switch (storeKey) {
       case 'ApplicantName':
-        return { ...identification.ApplicantName } || {}
+        return {
+          ...identification.ApplicantName,
+          ...form.IDENTIFICATION_NAME,
+        } || {}
 
       case 'ApplicantBirthDate':
         return { ...identification.ApplicantBirthDate } || {}
