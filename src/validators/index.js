@@ -7,16 +7,9 @@ import IdentificationContactInformationValidator, {
   ContactPhoneNumberValidator,
 } from './identificationcontacts'
 import IdentificationValidator from './identification'
-import IdentificationNameValidator from './identificationname'
-import IdentificationBirthDateValidator from './identificationbirthdate'
-import IdentificationBirthPlaceValidator from './identificationbirthplace'
-import IdentificationSSNValidator from './identificationssn'
 import NameValidator from './name'
-import IdentificationOtherNamesValidator, {
-  OtherNameValidator,
-} from './identificationothernames'
+import { OtherNameValidator } from './identificationothernames'
 import PassportValidator from './passport'
-import IdentificationPhysicalValidator from './identificationphysical'
 import GamblingValidator, { GamblingItemValidator } from './gambling'
 import HistoryResidenceValidator, { ResidenceValidator } from './residence'
 import HistoryEmploymentValidator, { EmploymentValidator } from './employment'
@@ -214,10 +207,6 @@ export default validate
 export {
   DateControlValidator,
   DateRangeValidator,
-  IdentificationNameValidator,
-  IdentificationBirthDateValidator,
-  IdentificationBirthPlaceValidator,
-  IdentificationSSNValidator,
   BankruptcyValidator,
   BankruptcyItemValidator,
   BirthPlaceValidator,
@@ -225,10 +214,8 @@ export {
   ContactPhoneNumberValidator,
   IdentificationValidator,
   NameValidator,
-  IdentificationOtherNamesValidator,
   OtherNameValidator,
   PassportValidator,
-  IdentificationPhysicalValidator,
   GamblingValidator,
   GamblingItemValidator,
   HistoryResidenceValidator,
