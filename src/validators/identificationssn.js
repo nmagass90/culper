@@ -1,23 +1,9 @@
 import { validateModel } from 'models/validate'
+import identificationSSN from 'models/sections/identificationSSN'
 
-export const validateIdentificationSSN = (data) => {
-  const { verified, ssn } = data
-
-  if (ssn && ssn.notApplicable) {
-    return true
-  }
-
-  if (verified !== true) return false
-
-  const ssnModel = {
-    ssn: {
-      presence: true,
-      ssn: true,
-    },
-  }
-
-  return validateModel({ ssn }, ssnModel) === true
-}
+export const validateIdentificationSSN = data => (
+  validateModel(data, identificationSSN) === true
+)
 
 /** LEGACY */
 export default class IdentificationSSNValidator {
