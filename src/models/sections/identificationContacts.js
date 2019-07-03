@@ -1,6 +1,15 @@
 import phone from 'models/shared/phone'
 import email from 'models/shared/email'
 
+export const contactPhoneNumber = {
+  Telephone: {
+    model: {
+      validator: phone,
+      requireNumberType: true,
+    },
+  },
+}
+
 const identificationContacts = {
   HomeEmail: (value, attributes) => {
     if (attributes.WorkEmail && attributes.WorkEmail.value) return {}
@@ -21,14 +30,7 @@ const identificationContacts = {
     accordion: {
       ignoreBranch: true,
       length: { minimum: 1 },
-      validator: {
-        Telephone: {
-          model: {
-            validator: phone,
-            requireNumberType: true,
-          },
-        },
-      },
+      validator: contactPhoneNumber,
       itemsValidator: (items) => {
         const numberTypes = []
         items.forEach((i) => {

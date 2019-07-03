@@ -1,6 +1,11 @@
 import { validateModel } from 'models/validate'
-import identificationContacts from 'models/sections/identificationContacts'
-import phone from 'models/shared/phone'
+import identificationContacts, {
+  contactPhoneNumber,
+} from 'models/sections/identificationContacts'
+
+export const validateContactPhoneNumber = data => (
+  validateModel(data, contactPhoneNumber) === true
+)
 
 export const validateIdentificationContactInformation = data => (
   validateModel(data, identificationContacts) === true
@@ -29,8 +34,6 @@ export class ContactPhoneNumberValidator {
   }
 
   isValid() {
-    return validateModel(this.data, {
-      Telephone: { model: { validator: phone, requireNumberType: true } },
-    }) === true
+    return validateContactPhoneNumber(this.data)
   }
 }
