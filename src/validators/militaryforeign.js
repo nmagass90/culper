@@ -1,6 +1,7 @@
 import store from 'services/store'
 import { validateModel } from 'models/validate'
 import militaryForeign, { foreignMilitaryContact } from 'models/militaryForeign'
+import militaryForeignMilitary from 'models/sections/militaryForeignMilitary'
 import * as formTypes from 'constants/formTypes'
 import { requireForeignMilitaryMaintainsContact } from 'helpers/branches'
 
@@ -32,17 +33,8 @@ export class ForeignServiceValidator {
   }
 }
 
-const militaryForeignModel = {
-  List: {
-    presence: true,
-    branchCollection: {
-      validator: militaryForeign,
-    },
-  },
-}
-
 export const validateMilitaryForeign = (data, formType = formTypes.SF86) => (
-  validateModel(data, militaryForeignModel, {
+  validateModel(data, militaryForeignMilitary, {
     requireForeignMilitaryMaintainsContact: requireForeignMilitaryMaintainsContact(formType),
   }) === true
 )

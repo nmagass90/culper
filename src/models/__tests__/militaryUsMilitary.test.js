@@ -1,5 +1,5 @@
 import { validateModel } from 'models/validate'
-import militaryHistory from '../militaryHistory'
+import militaryHistory from '../sections/militaryUsMilitary'
 
 describe('The military history model', () => {
   it('requires HasServed', () => {

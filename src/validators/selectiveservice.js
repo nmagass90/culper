@@ -1,4 +1,4 @@
-import selectiveService from 'models/selectiveService'
+import selectiveService from 'models/sections/militarySelectiveService'
 import { validateModel } from 'models/validate'
 import { extractDate } from '../components/Section/History/dateranges'
 

@@ -1,9 +1,9 @@
 import militaryService from 'models/militaryService'
-import militaryHistory from 'models/militaryHistory'
+import militaryUsMilitary from 'models/sections/militaryUsMilitary'
 import { validateModel } from 'models/validate'
 
 export const validateMilitaryHistory = data => (
-  validateModel(data, militaryHistory) === true
+  validateModel(data, militaryUsMilitary) === true
 )
 
 export const validateMilitaryService = data => (
@@ -18,11 +18,11 @@ export default class MilitaryHistoryValidator {
   }
 
   validServed() {
-    return validateModel(this.data, { HasServed: militaryHistory.HasServed }) === true
+    return validateModel(this.data, { HasServed: militaryUsMilitary.HasServed }) === true
   }
 
   validItems() {
-    return validateModel(this.data, { List: militaryHistory.List }) === true
+    return validateModel(this.data, { List: militaryUsMilitary.List }) === true
   }
 
   isValid() {

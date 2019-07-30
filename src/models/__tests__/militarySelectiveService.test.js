@@ -1,5 +1,5 @@
 import { validateModel } from 'models/validate'
-import selectiveService from 'models/selectiveService'
+import selectiveService from 'models/sections/militarySelectiveService'
 
 describe('The selective service model', () => {
   it('the WasBornAfter branch is required', () => {

@@ -1,7 +1,7 @@
 import { hasYesOrNo, checkValue } from 'models/validate'
-import militaryService from './militaryService'
+import militaryService from 'models/militaryService'
 
-const militaryHistory = {
+const militaryUsMilitary = {
   HasServed: {
     presence: true,
     hasValue: { validator: hasYesOrNo },
@@ -15,4 +15,4 @@ const militaryHistory = {
   ),
 }
 
-export default militaryHistory
+export default militaryUsMilitary
