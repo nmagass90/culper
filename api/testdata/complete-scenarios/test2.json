@@ -5332,6 +5332,24 @@
                       ]
                     }
                   },
+                  "AlternateAddress": {
+                    "type": "physicaladdress",
+                    "props": {
+                      "HasDifferentAddress": {
+                        "type": "branch",
+                        "props": {
+                          "value": "No"
+                        }
+                      },
+                      "Address": {
+                        "type": "location",
+                        "props": {
+                          "layout": "",
+                          "country": ""
+                        }
+                      }
+                    }
+                  },
                   "Birthdate": {
                     "type": "datecontrol",
                     "props": {
