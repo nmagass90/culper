@@ -17070,6 +17070,35 @@
                       ]
                     }
                   },
+                  "AlternateAddress": {
+                    "type": "physicaladdress",
+                    "props": {
+                      "HasDifferentAddress": {
+                        "type": "branch",
+                        "props": {
+                          "value": "No"
+                        }
+                      },
+                      "Address": {
+                        "type": "location",
+                        "props": {
+                          "layout": "",
+                          "country": ""
+                        }
+                      },
+                      "Telephone": {
+                        "type": "telephone",
+                        "props": {
+                          "timeOfDay": "",
+                          "type": "",
+                          "numberType": "",
+                          "number": "",
+                          "extension": "",
+                          "noNumber": false
+                        }
+                      }
+                    }
+                  },
                   "Birthdate": {
                     "type": "datecontrol",
                     "props": {
@@ -17350,6 +17379,35 @@
                           }
                         }
                       ]
+                    }
+                  },
+                  "AlternateAddress": {
+                    "type": "physicaladdress",
+                    "props": {
+                      "HasDifferentAddress": {
+                        "type": "branch",
+                        "props": {
+                          "value": "No"
+                        }
+                      },
+                      "Address": {
+                        "type": "location",
+                        "props": {
+                          "layout": "",
+                          "country": ""
+                        }
+                      },
+                      "Telephone": {
+                        "type": "telephone",
+                        "props": {
+                          "timeOfDay": "",
+                          "type": "",
+                          "numberType": "",
+                          "number": "",
+                          "extension": "",
+                          "noNumber": false
+                        }
+                      }
                     }
                   },
                   "Birthdate": {
@@ -17641,6 +17699,35 @@
                       ]
                     }
                   },
+                  "AlternateAddress": {
+                    "type": "physicaladdress",
+                    "props": {
+                      "HasDifferentAddress": {
+                        "type": "branch",
+                        "props": {
+                          "value": "No"
+                        }
+                      },
+                      "Address": {
+                        "type": "location",
+                        "props": {
+                          "layout": "",
+                          "country": ""
+                        }
+                      },
+                      "Telephone": {
+                        "type": "telephone",
+                        "props": {
+                          "timeOfDay": "",
+                          "type": "",
+                          "numberType": "",
+                          "number": "",
+                          "extension": "",
+                          "noNumber": false
+                        }
+                      }
+                    }
+                  },
                   "Birthdate": {
                     "type": "datecontrol",
                     "props": {
@@ -17869,6 +17956,35 @@
                         "type": ""
                       },
                       "items": []
+                    }
+                  },
+                  "AlternateAddress": {
+                    "type": "physicaladdress",
+                    "props": {
+                      "HasDifferentAddress": {
+                        "type": "branch",
+                        "props": {
+                          "value": "No"
+                        }
+                      },
+                      "Address": {
+                        "type": "location",
+                        "props": {
+                          "layout": "",
+                          "country": ""
+                        }
+                      },
+                      "Telephone": {
+                        "type": "telephone",
+                        "props": {
+                          "timeOfDay": "",
+                          "type": "",
+                          "numberType": "",
+                          "number": "",
+                          "extension": "",
+                          "noNumber": false
+                        }
+                      }
                     }
                   },
                   "Birthdate": {
@@ -18153,6 +18269,35 @@
                           }
                         }
                       ]
+                    }
+                  },
+                  "AlternateAddress": {
+                    "type": "physicaladdress",
+                    "props": {
+                      "HasDifferentAddress": {
+                        "type": "branch",
+                        "props": {
+                          "value": "No"
+                        }
+                      },
+                      "Address": {
+                        "type": "location",
+                        "props": {
+                          "layout": "",
+                          "country": ""
+                        }
+                      },
+                      "Telephone": {
+                        "type": "telephone",
+                        "props": {
+                          "timeOfDay": "",
+                          "type": "",
+                          "numberType": "",
+                          "number": "",
+                          "extension": "",
+                          "noNumber": false
+                        }
+                      }
                     }
                   },
                   "Birthdate": {
